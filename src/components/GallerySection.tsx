@@ -12,7 +12,11 @@ import { useLanguage } from '../context/LanguageContext';
 
 type CategoryFilter = 'All' | 'Training Sessions' | 'Certificate Distribution' | 'Student Activities' | 'Educational Visits' | 'Campus Life';
 
-export const GallerySection: React.FC = () => {
+interface GallerySectionProps {
+  onOpenApply?: (courseId?: string) => void;
+}
+
+export const GallerySection: React.FC<GallerySectionProps> = ({ onOpenApply }) => {
   const [activeCategory, setActiveCategory] = useState<CategoryFilter>('All');
   const [selectedItem, setSelectedItem] = useState<GalleryItem | null>(null);
   const { t, language } = useLanguage();
@@ -83,13 +87,33 @@ export const GallerySection: React.FC = () => {
           })}
         </div>
 
+        {/* Gallery Interactive Helper Hint */}
+        <div className="flex items-center justify-center gap-2 text-xs text-slate-500 mb-6 font-medium">
+          <Eye className="w-3.5 h-3.5 text-blue-600" />
+          <span>
+            {language === 'hi'
+              ? 'फुल-स्क्रीन व्यू, नेविगेशन एरो और ज़ूम टूल्स हेतु किसी भी तस्वीर पर क्लिक करें'
+              : 'Click any photo to open full-screen lightbox with navigation arrows, zoom & slideshow'}
+          </span>
+        </div>
+
         {/* Gallery Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {filteredItems.map((item) => (
+          {filteredItems.map((item, index) => (
             <div
               key={item.id}
+              id={`gallery-item-${item.id}`}
+              role="button"
+              tabIndex={0}
               onClick={() => handleOpenLightbox(item)}
-              className="group relative bg-slate-900 rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 cursor-pointer flex flex-col h-80 border border-slate-200"
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  handleOpenLightbox(item);
+                }
+              }}
+              className="group relative bg-slate-900 rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 cursor-pointer flex flex-col h-80 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              aria-label={`Enlarge photo ${index + 1}: ${item.title}`}
             >
               {/* Image Container */}
               <div className="relative w-full h-full overflow-hidden bg-slate-800">
@@ -109,9 +133,12 @@ export const GallerySection: React.FC = () => {
                   </span>
                 </div>
 
-                {/* Quick Zoom Overlay Icon */}
-                <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity">
-                  <Eye className="w-4 h-4" />
+                {/* Quick Zoom Overlay Icon Badge */}
+                <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-black/50 backdrop-blur-md flex items-center gap-1 text-white opacity-0 group-hover:opacity-100 transition-all duration-200 border border-white/20">
+                  <Eye className="w-3.5 h-3.5 text-emerald-400" />
+                  <span className="text-[10px] font-bold uppercase tracking-wider">
+                    {language === 'hi' ? 'फुल स्क्रीन' : 'Fullscreen'}
+                  </span>
                 </div>
 
                 {/* Caption on bottom */}
@@ -125,8 +152,8 @@ export const GallerySection: React.FC = () => {
                   <h3 className="text-sm font-bold leading-snug line-clamp-2 text-white group-hover:text-blue-200 transition-colors">
                     {item.title}
                   </h3>
-                  <p className="text-xs text-slate-300 line-clamp-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                    {language === 'hi' ? 'पूरी तस्वीर व विवरण देखने हेतु क्लिक करें' : 'Click to view full photo & details'}
+                  <p className="text-xs text-slate-300 line-clamp-1 opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1 text-emerald-300 font-medium">
+                    <span>{language === 'hi' ? 'फुल-स्क्रीन विवरण देखें' : 'Click to enlarge full-screen'}</span>
                   </p>
                 </div>
               </div>
@@ -169,6 +196,7 @@ export const GallerySection: React.FC = () => {
           items={filteredItems}
           onClose={() => setSelectedItem(null)}
           onNavigate={handleNavigateLightbox}
+          onOpenApply={onOpenApply}
         />
       )}
     </section>

@@ -1,14 +1,13 @@
-import { Course, GalleryItem, Testimonial, Notice, FAQItem } from '../types';
+import { Course, GalleryItem, Testimonial, Notice, FAQItem, LeadershipProfile, FacultyProfile, TeachingApproachItem } from '../types';
 
 // ============================================================================
 // OFFICIAL CONTACT CONFIGURATION (Easily update official contact details here)
 // ============================================================================
 export const CONTACT_CONFIG = {
-  // Placeholder variables - update with authorized official details when provided
-  PHONE_NUMBER: "+91 94311 00000", // Update with official phone number (e.g. +91 9XXXXXXXXX)
-  PHONE_DISPLAY: "+91 (STPI Deoghar Centre Desk)", 
-  EMAIL_ADDRESS: "admissions.deoghar@vfsglobalacademy.org", // Update with official academy email
-  WHATSAPP_NUMBER: "+919431100000", // Update with WhatsApp inquiry contact digits
+  PHONE_NUMBER: "+91 94311 76637",
+  PHONE_DISPLAY: "+91 94311 76637", 
+  EMAIL_ADDRESS: "admissions.deoghar@vfsglobalacademy.org",
+  WHATSAPP_NUMBER: "+919431176637",
   WHATSAPP_MESSAGE_PREFILL: "Hello VFS Global Academy STPI Deoghar, I would like to inquire about admission for the Certificate Courses.",
   GOOGLE_MAP_LOCATION: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3627.5749216012484!2d86.64724897536254!3d24.51739597815598!2m3!1f0!2f0!3f0!3m2!1i1024!2f768!4f13.1!3m3!1m2!1s0x39f116503c202029%3A0x6b4f74d0e57ba5c4!2sSoftware%20Technology%20Parks%20of%20India%20(STPI)%20Deoghar!5e0!3m2!1sen!2sin!4v1720000000000!5m2!1sen!2sin",
   GOOGLE_MAPS_LINK: "https://maps.google.com/?q=STPI+Deoghar+Jasidih+Jharkhand",
@@ -28,16 +27,174 @@ export const CONTACT_CONFIG = {
 };
 
 // ============================================================================
-// LEADERSHIP DETAILS
+// LEADERSHIP & FACULTY DETAILS
 // ============================================================================
-export const LEADERSHIP_INFO = {
-  name: "Ramsewak Gunjan",
+export const CENTRE_HEAD_INFO: LeadershipProfile = {
+  name: "RAMSEWAK GUNJAN",
   role: "Centre Head",
   organization: "VFS Global Foundation",
   location: "STPI, Deoghar (Jasidih)",
-  quote: "Empowering young learners through skill development, professional training and communication education.",
-  bio: "Committed to fostering vocational excellence and career readiness for students across Deoghar and Jharkhand, bridging theoretical learning with real-world travel, hospitality, and communication industry practices.",
-  image: "/src/assets/images/classroom_smart_lecture_1788153752542.jpg"
+  bio: "Ramsewak Gunjan serves as the Centre Head and plays an important role in guiding students throughout their learning and professional development journey. With a strong focus on communication, confidence and personality development, he encourages students to become confident, expressive and professionally prepared individuals. His mentorship focuses on helping students develop the essential skills required for academic, professional and public environments.",
+  guidanceAreas: [
+    "Communication Skills",
+    "Voice Modulation",
+    "Stage Speaking",
+    "Public Speaking",
+    "Presentation Skills",
+    "Professional Grooming",
+    "Dressing Sense",
+    "Body Language",
+    "Overall Expression",
+    "Personality Development"
+  ],
+  quote: "Confidence is built through knowledge, communication and the courage to express yourself.",
+  image: "/src/assets/images/ramsewak_gunjan_head_1788171851297.jpg"
+};
+
+export const FACULTY_MEMBERS: FacultyProfile[] = [
+  {
+    id: "faculty-pramod",
+    name: "PRAMOD SIR",
+    role: "English Communication & Personality Development Mentor",
+    organization: "VFS Global Foundation",
+    location: "STPI, Deoghar (Jasidih)",
+    bio: "Pramod Sir is dedicated to helping students strengthen their English communication skills and develop confidence for professional and personal growth. His interactive teaching approach encourages students to speak confidently, participate actively and improve their overall communication abilities. Through practical activities, communication exercises and interactive sessions, students are encouraged to overcome hesitation and express themselves with confidence.",
+    expertiseAreas: [
+      "English Speaking",
+      "Spoken English",
+      "Self Introduction",
+      "Interview Preparation",
+      "Group Discussion",
+      "Modern English Communication",
+      "Conversation Practice",
+      "Public Speaking",
+      "Drama Preparation",
+      "Presentation Skills",
+      "Confidence Building",
+      "Personality Development"
+    ],
+    quote: "Effective communication is not only about speaking English—it is about expressing yourself with confidence and clarity.",
+    image: "/src/assets/images/pramod_sir_mentor_1788171866404.jpg",
+    badge: "English & Personality Mentor"
+  },
+  {
+    id: "faculty-raushan",
+    name: "RAUSHAN MISHRA",
+    role: "Technician & Travel–Hospitality Mentor",
+    organization: "VFS Global Foundation",
+    location: "STPI, Deoghar (Jasidih)",
+    bio: "Raushan Mishra is a dedicated professional and mentor who supports students in developing practical knowledge of the travel, tourism and hospitality industry. His guidance helps learners understand important aspects of tourism, hospitality services, customer experience and professional opportunities within the industry. His teaching approach focuses on practical understanding and industry-oriented learning.",
+    expertiseAreas: [
+      "Travel & Tourism Fundamentals",
+      "Travel Management",
+      "Hotel Management",
+      "Event Management",
+      "Tourist Guiding",
+      "Tourism Awareness",
+      "Food & Hospitality",
+      "Customer Service",
+      "Passport Awareness",
+      "Visa Process Awareness"
+    ],
+    quote: "Knowledge becomes meaningful when it prepares learners for real-world opportunities.",
+    image: "/src/assets/images/raushan_mishra_mentor_1788171880485.jpg",
+    badge: "Travel & Hospitality Specialist"
+  }
+];
+
+export const TEACHING_APPROACHES: TeachingApproachItem[] = [
+  {
+    id: 1,
+    title: "PRACTICAL LEARNING",
+    titleHi: "व्यावहारिक शिक्षण",
+    description: "Learning through practical activities and real-world examples.",
+    descriptionHi: "व्यावहारिक गतिविधियों और वास्तविक दुनिया के उदाहरणों के माध्यम से सीखना।",
+    icon: "GraduationCap"
+  },
+  {
+    id: 2,
+    title: "COMMUNICATION DEVELOPMENT",
+    titleHi: "संचार कौशल विकास",
+    description: "Building confidence and effective communication skills.",
+    descriptionHi: "आत्मविश्वास और प्रभावी संचार कौशल का निर्माण करना।",
+    icon: "MessageSquare"
+  },
+  {
+    id: 3,
+    title: "PERSONALITY DEVELOPMENT",
+    titleHi: "व्यक्तित्व विकास",
+    description: "Improving presentation, grooming and professional behaviour.",
+    descriptionHi: "प्रस्तुति, ग्रूमिंग और पेशेवर व्यवहार में सुधार।",
+    icon: "Sparkles"
+  },
+  {
+    id: 4,
+    title: "INDUSTRY KNOWLEDGE",
+    titleHi: "उद्योग ज्ञान एवं जागरूकता",
+    description: "Providing awareness of travel, tourism and hospitality opportunities.",
+    descriptionHi: "यात्रा, पर्यटन और आतिथ्य अवसरों की संपूर्ण व्यावहारिक समझ।",
+    icon: "Compass"
+  },
+  {
+    id: 5,
+    title: "CAREER PREPARATION",
+    titleHi: "करियर व साक्षात्कार तैयारी",
+    description: "Preparing students for interviews, group discussions and professional opportunities.",
+    descriptionHi: "साक्षात्कार, समूह चर्चा और पेशेवर अवसरों के लिए विद्यार्थियों को तैयार करना।",
+    icon: "Briefcase"
+  },
+  {
+    id: 6,
+    title: "CONFIDENCE BUILDING",
+    titleHi: "आत्मविश्वास निर्माण",
+    description: "Helping students overcome hesitation and express themselves confidently.",
+    descriptionHi: "छात्रों को झिझक दूर करने और आत्मविश्वास से खुद को व्यक्त करने में मदद करना।",
+    icon: "ShieldCheck"
+  }
+];
+
+export const COMMITMENT_GOALS = [
+  {
+    title: "Learn New Skills",
+    titleHi: "नए कौशल सीखें",
+    desc: "Industry-aligned competencies in hospitality, ticketing, and communicative fluency."
+  },
+  {
+    title: "Build Confidence",
+    titleHi: "आत्मविश्वास बनाएं",
+    desc: "Overcome hesitation through stage presence, group interactions, and public speaking."
+  },
+  {
+    title: "Improve Communication",
+    titleHi: "संचार में सुधार करें",
+    desc: "Master spoken English, active listening, voice modulation, and clear articulation."
+  },
+  {
+    title: "Develop Professional Personality",
+    titleHi: "व्यावसायिक व्यक्तित्व विकसित करें",
+    desc: "Learn corporate grooming, dressing etiquette, body language, and professional manners."
+  },
+  {
+    title: "Explore Career Opportunities",
+    titleHi: "करियर के अवसरों को जानें",
+    desc: "Gain deep awareness of hospitality, airline ground staff, customer relations, and travel desks."
+  },
+  {
+    title: "Prepare for the Future",
+    titleHi: "भविष्य के लिए तैयार हों",
+    desc: "Rigorous mock interview drills, CV preparation, and professional readiness workshops."
+  }
+];
+
+// Backwards compatibility alias
+export const LEADERSHIP_INFO = {
+  name: CENTRE_HEAD_INFO.name,
+  role: CENTRE_HEAD_INFO.role,
+  organization: CENTRE_HEAD_INFO.organization,
+  location: CENTRE_HEAD_INFO.location,
+  quote: CENTRE_HEAD_INFO.quote,
+  bio: CENTRE_HEAD_INFO.bio,
+  image: CENTRE_HEAD_INFO.image
 };
 
 // ============================================================================
@@ -192,7 +349,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     title: "STPI Deoghar Grand Convocation & Batch Cohort",
     category: "Campus Life",
     description: "Graduating students and faculty holding official certificates outside the Software Technology Parks of India (STPI) facility in Jasidih, Deoghar.",
-    image: "/src/assets/images/stpi_convocation_campus_1788153690739.jpg",
+    image: "/src/assets/images/stpi_deoghar_convocation_group_1788172265424.jpg",
     location: "STPI Deoghar Campus",
     featured: true
   },
@@ -219,7 +376,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     title: "VFS Global Academy Front Reception Desk",
     category: "Campus Life",
     description: "Batch students, centre coordinators, and Centre Head gathered at the official VFS Global Academy front desk at STPI Deoghar.",
-    image: "/src/assets/images/vfs_reception_batch_1788153734515.jpg",
+    image: "/src/assets/images/vfs_reception_desk_students_1788172247496.jpg",
     location: "VFS Academy Reception",
     featured: true
   },

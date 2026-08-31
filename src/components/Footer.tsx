@@ -124,7 +124,25 @@ export const Footer: React.FC = () => {
                 <span>{language === 'hi' ? 'कार्यालय / डेस्क समय:' : 'Office / Desk Timing:'} <strong>10:00 AM – 01:00 PM</strong></span>
               </div>
 
-              <div className="pt-2">
+              {/* Direct Phone & WhatsApp in Footer */}
+              <div className="pt-2 flex flex-wrap items-center gap-2">
+                <a
+                  href={`tel:${CONTACT_CONFIG.PHONE_NUMBER.replace(/\s+/g, '')}`}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-900/60 hover:bg-blue-800 text-white text-xs font-bold border border-blue-700/60 transition-colors"
+                >
+                  <span>📞 {CONTACT_CONFIG.PHONE_NUMBER}</span>
+                </a>
+                <a
+                  href={`https://wa.me/${CONTACT_CONFIG.WHATSAPP_NUMBER.replace(/\D/g, '')}?text=${encodeURIComponent(CONTACT_CONFIG.WHATSAPP_MESSAGE_PREFILL)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-emerald-900/60 hover:bg-emerald-800 text-emerald-300 text-xs font-bold border border-emerald-700/60 transition-colors"
+                >
+                  <span>💬 WhatsApp</span>
+                </a>
+              </div>
+
+              <div className="pt-1">
                 <a 
                   href={CONTACT_CONFIG.GOOGLE_MAPS_LINK}
                   target="_blank"
@@ -153,10 +171,11 @@ export const Footer: React.FC = () => {
         {/* Bottom Copyright & Back to Top */}
         <div className="mt-8 pt-6 border-t border-slate-900 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
           <p className="text-slate-500 text-center sm:text-left">
-            © 2026 VFS Global Academy. Operated under VFS Global Foundation. All rights reserved.
+            Copyright © 2026 VFS Global Academy. All Rights Reserved.
           </p>
 
           <button
+            id="footer-back-to-top-btn"
             onClick={scrollToTop}
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 text-xs transition-colors cursor-pointer"
           >

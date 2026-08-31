@@ -5,6 +5,8 @@ import {
   X, 
   MapPin, 
   Clock, 
+  Phone,
+  MessageSquare,
   ChevronRight
 } from 'lucide-react';
 import { CONTACT_CONFIG } from '../data/academyData';
@@ -42,6 +44,9 @@ export const Header: React.FC<HeaderProps> = ({ onOpenApply, activeSection }) =>
     { name: t.navContact, href: '#contact', id: 'contact' },
   ];
 
+  const whatsappLink = `https://wa.me/${CONTACT_CONFIG.WHATSAPP_NUMBER.replace(/\D/g, '')}?text=${encodeURIComponent(CONTACT_CONFIG.WHATSAPP_MESSAGE_PREFILL)}`;
+  const phoneCallLink = `tel:${CONTACT_CONFIG.PHONE_NUMBER.replace(/\s+/g, '')}`;
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
       {/* Top Announcement Bar */}
@@ -57,14 +62,32 @@ export const Header: React.FC<HeaderProps> = ({ onOpenApply, activeSection }) =>
           </div>
           
           <div className="flex items-center gap-3 sm:gap-4 text-xs text-blue-200">
-            <div className="flex items-center gap-1.5">
+            {/* Direct Helpline / WhatsApp */}
+            <a 
+              href={phoneCallLink}
+              className="flex items-center gap-1.5 font-bold text-white hover:text-emerald-300 transition-colors bg-blue-800/50 hover:bg-blue-800 px-2 py-0.5 rounded-md border border-blue-700/60"
+              title="Call Admission Desk"
+            >
+              <Phone className="w-3 h-3 text-emerald-400" />
+              <span>{CONTACT_CONFIG.PHONE_NUMBER}</span>
+            </a>
+
+            <a 
+              href={whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden md:flex items-center gap-1 text-emerald-300 hover:text-emerald-200 transition-colors font-semibold"
+              title="WhatsApp Admission Desk"
+            >
+              <MessageSquare className="w-3 h-3" />
+              <span>WhatsApp</span>
+            </a>
+
+            <div className="hidden lg:flex items-center gap-1.5">
               <Clock className="w-3.5 h-3.5 text-emerald-400" />
               <span>{t.deskHours}</span>
             </div>
-            <div className="hidden md:flex items-center gap-1.5">
-              <MapPin className="w-3.5 h-3.5 text-blue-400" />
-              <span>{t.jasidihLocation}</span>
-            </div>
+
             {/* Topbar Quick Language Switcher */}
             <div className="flex sm:hidden">
               <LanguageSwitcher variant="topbar" />
@@ -108,6 +131,17 @@ export const Header: React.FC<HeaderProps> = ({ onOpenApply, activeSection }) =>
 
             {/* Desktop Language Switcher & CTA Button */}
             <div className="hidden sm:flex items-center gap-2 sm:gap-3">
+              {/* Direct WhatsApp Pill */}
+              <a
+                href={whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hidden lg:inline-flex items-center gap-1.5 px-3 py-2 text-xs font-bold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 rounded-lg transition-colors"
+              >
+                <MessageSquare className="w-3.5 h-3.5 text-emerald-600" />
+                <span>+91 94311 76637</span>
+              </a>
+
               {/* Language Switcher Button Group */}
               <LanguageSwitcher variant="header" />
 
@@ -142,6 +176,26 @@ export const Header: React.FC<HeaderProps> = ({ onOpenApply, activeSection }) =>
             {/* Mobile Language Switcher */}
             <LanguageSwitcher variant="mobile" />
 
+            {/* Direct Quick Contact Buttons on Mobile */}
+            <div className="grid grid-cols-2 gap-2 pt-1">
+              <a
+                href={phoneCallLink}
+                className="flex items-center justify-center gap-2 py-2.5 px-3 bg-blue-50 text-blue-700 border border-blue-200 rounded-xl text-xs font-bold"
+              >
+                <Phone className="w-3.5 h-3.5" />
+                <span>Call Desk</span>
+              </a>
+              <a
+                href={whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 py-2.5 px-3 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-xl text-xs font-bold"
+              >
+                <MessageSquare className="w-3.5 h-3.5" />
+                <span>WhatsApp</span>
+              </a>
+            </div>
+
             <div className="grid grid-cols-1 gap-1">
               {navLinks.map((link) => (
                 <a
@@ -170,7 +224,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenApply, activeSection }) =>
               </button>
 
               <div className="text-center text-xs text-slate-500 pt-1">
-                STPI Deoghar Centre Desk: 10:00 AM – 01:00 PM
+                STPI Deoghar Centre Desk: +91 94311 76637 (10:00 AM – 01:00 PM)
               </div>
             </div>
           </div>

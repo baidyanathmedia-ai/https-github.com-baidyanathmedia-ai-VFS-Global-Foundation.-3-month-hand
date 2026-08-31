@@ -1,16 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { 
   Building2, 
   MapPin, 
   Target, 
   GraduationCap, 
-  ExternalLink 
+  ExternalLink,
+  Eye 
 } from 'lucide-react';
-import { CONTACT_CONFIG } from '../data/academyData';
+import { CONTACT_CONFIG, GALLERY_ITEMS } from '../data/academyData';
+import { GalleryItem } from '../types';
+import { LightboxModal } from './LightboxModal';
 import { useLanguage } from '../context/LanguageContext';
 
 export const AboutSection: React.FC = () => {
   const { t, language } = useLanguage();
+  const [selectedPhoto, setSelectedPhoto] = useState<GalleryItem | null>(null);
+
+  const openCampusPhoto = (photoId: string) => {
+    const item = GALLERY_ITEMS.find(g => g.id === photoId) || GALLERY_ITEMS[0];
+    setSelectedPhoto(item);
+  };
 
   return (
     <section id="about" className="py-20 bg-white relative overflow-hidden">
@@ -110,7 +119,12 @@ export const AboutSection: React.FC = () => {
 
           {/* Right Image Showcase */}
           <div className="lg:col-span-5 space-y-4">
-            <div className="relative rounded-2xl overflow-hidden shadow-xl border border-slate-200 group">
+            <div 
+              id="about-campus-main-photo"
+              onClick={() => openCampusPhoto("gal-1")}
+              className="relative rounded-2xl overflow-hidden shadow-xl border border-slate-200 group cursor-pointer"
+              title={language === 'hi' ? 'फुल-स्क्रीन में देखने हेतु क्लिक करें' : 'Click to enlarge full-screen'}
+            >
               <img 
                 src="/src/assets/images/stpi_convocation_campus_1788153690739.jpg" 
                 alt="STPI Deoghar Centre Convocation" 
@@ -118,38 +132,54 @@ export const AboutSection: React.FC = () => {
                 referrerPolicy="no-referrer"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-5">
-                <div className="text-white">
+                <div className="text-white flex-1">
                   <div className="text-xs font-semibold px-2.5 py-1 rounded bg-emerald-600 inline-block mb-1">
                     STPI Deoghar Campus
                   </div>
                   <h4 className="text-lg font-bold">Software Technology Parks of India</h4>
                   <p className="text-xs text-slate-200">Manikpur Road, Jasidih, Deoghar (Jharkhand)</p>
                 </div>
+
+                <div className="p-2 rounded-full bg-white/20 backdrop-blur-md text-white opacity-0 group-hover:opacity-100 transition-opacity shrink-0">
+                  <Eye className="w-4 h-4" />
+                </div>
               </div>
             </div>
 
             <div className="grid grid-cols-2 gap-4">
-              <div className="rounded-xl overflow-hidden border border-slate-200 relative h-36">
+              <div 
+                id="about-campus-reception-photo"
+                onClick={() => openCampusPhoto("gal-4")}
+                className="rounded-xl overflow-hidden border border-slate-200 relative h-36 group cursor-pointer"
+                title={language === 'hi' ? 'फुल-स्क्रीन में देखने हेतु क्लिक करें' : 'Click to enlarge full-screen'}
+              >
                 <img 
                   src="/src/assets/images/vfs_reception_batch_1788153734515.jpg" 
                   alt="VFS Academy Reception Desk" 
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   referrerPolicy="no-referrer"
                 />
-                <div className="absolute inset-0 bg-slate-950/50 p-2.5 flex items-end">
+                <div className="absolute inset-0 bg-slate-950/50 p-2.5 flex items-end justify-between">
                   <span className="text-xs font-bold text-white">{language === 'hi' ? 'अकादमी रिसेप्शन डेस्क' : 'Academy Reception'}</span>
+                  <Eye className="w-3.5 h-3.5 text-white/80 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
               </div>
 
-              <div className="rounded-xl overflow-hidden border border-slate-200 relative h-36">
+              <div 
+                id="about-campus-cert-photo"
+                onClick={() => openCampusPhoto("gal-2")}
+                className="rounded-xl overflow-hidden border border-slate-200 relative h-36 group cursor-pointer"
+                title={language === 'hi' ? 'फुल-स्क्रीन में देखने हेतु क्लिक करें' : 'Click to enlarge full-screen'}
+              >
                 <img 
                   src="/src/assets/images/vfs_certificate_award_1788153716243.jpg" 
                   alt="Certificate Distribution" 
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   referrerPolicy="no-referrer"
                 />
-                <div className="absolute inset-0 bg-slate-950/50 p-2.5 flex items-end">
+                <div className="absolute inset-0 bg-slate-950/50 p-2.5 flex items-end justify-between">
                   <span className="text-xs font-bold text-white">{language === 'hi' ? 'सर्टिफिकेट वितरण' : 'Certificate Ceremony'}</span>
+                  <Eye className="w-3.5 h-3.5 text-white/80 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
               </div>
             </div>
@@ -158,6 +188,16 @@ export const AboutSection: React.FC = () => {
 
         </div>
       </div>
+
+      {/* Lightbox Modal for Campus Photos */}
+      {selectedPhoto && (
+        <LightboxModal
+          item={selectedPhoto}
+          items={GALLERY_ITEMS}
+          onClose={() => setSelectedPhoto(null)}
+          onNavigate={(index) => setSelectedPhoto(GALLERY_ITEMS[index])}
+        />
+      )}
     </section>
   );
 };

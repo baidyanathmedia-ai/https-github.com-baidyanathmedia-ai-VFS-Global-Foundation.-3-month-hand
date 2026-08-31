@@ -52,6 +52,39 @@ export interface FAQItem {
   answer: string;
 }
 
+export interface LeadershipProfile {
+  name: string;
+  role: string;
+  organization: string;
+  location: string;
+  bio: string;
+  guidanceAreas: string[];
+  quote: string;
+  image: string;
+}
+
+export interface FacultyProfile {
+  id: string;
+  name: string;
+  role: string;
+  organization: string;
+  location: string;
+  bio: string;
+  expertiseAreas: string[];
+  quote: string;
+  image: string;
+  badge?: string;
+}
+
+export interface TeachingApproachItem {
+  id: number;
+  title: string;
+  titleHi: string;
+  description: string;
+  descriptionHi: string;
+  icon: string;
+}
+
 export interface ApplicationFormData {
   fullName: string;
   fatherName: string;

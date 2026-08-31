@@ -112,23 +112,32 @@ export const ContactSection: React.FC = () => {
                 </div>
               </div>
 
-              {/* Placeholder Variables Information */}
+              {/* Direct Contact Details */}
               <div className="pt-2 border-t border-slate-700 space-y-3">
                 <div className="text-xs font-bold uppercase text-slate-400 tracking-wider">
                   {language === 'hi' ? 'सीधा संपर्क विवरण' : 'Direct Contact Details'}
                 </div>
 
-                {/* Phone placeholder */}
-                <div className="flex items-center gap-3 text-xs sm:text-sm text-slate-300">
-                  <Phone className="w-4 h-4 text-blue-400 shrink-0" />
-                  <div>
-                    <span className="text-slate-400 block text-[11px]">{language === 'hi' ? 'फोन पूछताछ:' : 'Phone Inquiries:'}</span>
-                    <span className="font-semibold text-white">{CONTACT_CONFIG.PHONE_DISPLAY}</span>
+                {/* Phone number */}
+                <div className="flex items-center justify-between gap-3 text-xs sm:text-sm text-slate-300 bg-slate-900/60 p-3 rounded-xl border border-slate-700/60">
+                  <div className="flex items-center gap-3">
+                    <Phone className="w-4 h-4 text-emerald-400 shrink-0" />
+                    <div>
+                      <span className="text-slate-400 block text-[11px]">{language === 'hi' ? 'फोन पूछताछ एवं कॉल:' : 'Phone & Direct Call:'}</span>
+                      <span className="font-bold text-white text-sm">{CONTACT_CONFIG.PHONE_DISPLAY}</span>
+                    </div>
                   </div>
+                  <a
+                    href={`tel:${CONTACT_CONFIG.PHONE_NUMBER.replace(/\s+/g, '')}`}
+                    className="px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs flex items-center gap-1 transition-colors"
+                  >
+                    <Phone className="w-3 h-3" />
+                    <span>{language === 'hi' ? 'कॉल करें' : 'Call'}</span>
+                  </a>
                 </div>
 
-                {/* Email placeholder */}
-                <div className="flex items-center gap-3 text-xs sm:text-sm text-slate-300">
+                {/* Email */}
+                <div className="flex items-center gap-3 text-xs sm:text-sm text-slate-300 bg-slate-900/60 p-3 rounded-xl border border-slate-700/60">
                   <Mail className="w-4 h-4 text-sky-400 shrink-0" />
                   <div>
                     <span className="text-slate-400 block text-[11px]">{language === 'hi' ? 'ईमेल डेस्क:' : 'Email Desk:'}</span>
@@ -136,17 +145,26 @@ export const ContactSection: React.FC = () => {
                   </div>
                 </div>
 
-                {/* WhatsApp button placeholder */}
-                <div className="pt-2">
+                {/* Multi-channel buttons: WhatsApp & SMS */}
+                <div className="grid grid-cols-2 gap-2 pt-2">
                   <a
                     id="whatsapp-inquiry-btn"
                     href={whatsappUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-colors shadow-md"
+                    className="py-3 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-colors shadow-md"
                   >
                     <MessageSquare className="w-4 h-4" />
-                    <span>{language === 'hi' ? 'व्हाट्सएप पर संपर्क करें' : 'Chat with Admission Desk on WhatsApp'}</span>
+                    <span>{language === 'hi' ? 'व्हाट्सएप' : 'WhatsApp'}</span>
+                  </a>
+
+                  <a
+                    id="sms-inquiry-btn"
+                    href={`sms:${CONTACT_CONFIG.PHONE_NUMBER.replace(/\s+/g, '')}?body=${encodeURIComponent(CONTACT_CONFIG.WHATSAPP_MESSAGE_PREFILL)}`}
+                    className="py-3 px-3 rounded-xl bg-blue-700 hover:bg-blue-600 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-colors shadow-md"
+                  >
+                    <Send className="w-4 h-4" />
+                    <span>{language === 'hi' ? 'SMS संदेश' : 'SMS Message'}</span>
                   </a>
                 </div>
               </div>

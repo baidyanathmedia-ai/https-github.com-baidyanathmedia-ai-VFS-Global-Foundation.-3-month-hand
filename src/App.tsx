@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { ReadingProgressBar } from './components/ReadingProgressBar';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { AboutSection } from './components/AboutSection';
@@ -11,6 +12,7 @@ import { LeadershipSection } from './components/LeadershipSection';
 import { TestimonialsSection } from './components/TestimonialsSection';
 import { NoticeBoard } from './components/NoticeBoard';
 import { ApplySection } from './components/ApplySection';
+import { CtaSection } from './components/CtaSection';
 import { FaqSection } from './components/FaqSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
@@ -71,12 +73,15 @@ export default function App() {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
     <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-blue-600 selection:text-white flex flex-col">
+      {/* Scroll Progress Bar at Top of Viewport */}
+      <ReadingProgressBar />
+
       {/* Sticky Header */}
       <Header onOpenApply={handleOpenApply} activeSection={activeSection} />
 
@@ -101,10 +106,10 @@ export default function App() {
         <AdmissionSection onOpenApply={() => handleOpenApply()} />
 
         {/* 7. Authentic Campus & Activities Photo Gallery */}
-        <GallerySection />
+        <GallerySection onOpenApply={handleOpenApply} />
 
-        {/* 8. Centre Head & Academic Leadership Message */}
-        <LeadershipSection />
+        {/* 8. Leadership & Faculty Section */}
+        <LeadershipSection onOpenApply={handleOpenApply} />
 
         {/* 9. Student Testimonials */}
         <TestimonialsSection />
@@ -115,10 +120,13 @@ export default function App() {
         {/* 11. Full On-Page Registration Form Portal */}
         <ApplySection />
 
-        {/* 12. Frequently Asked Questions */}
+        {/* 12. Final CTA Banner: LEARN. GROW. ACHIEVE. */}
+        <CtaSection onOpenApply={handleOpenApply} />
+
+        {/* 13. Frequently Asked Questions */}
         <FaqSection />
 
-        {/* 13. Contact Academy & STPI Map */}
+        {/* 14. Contact Academy & STPI Map */}
         <ContactSection />
       </main>
 

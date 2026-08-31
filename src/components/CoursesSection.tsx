@@ -5,9 +5,12 @@ import {
   Calendar, 
   CheckCircle, 
   ArrowRight, 
-  Award
+  Award,
+  Eye
 } from 'lucide-react';
-import { COURSES_DATA } from '../data/academyData';
+import { COURSES_DATA, GALLERY_ITEMS } from '../data/academyData';
+import { GalleryItem } from '../types';
+import { LightboxModal } from './LightboxModal';
 import { useLanguage } from '../context/LanguageContext';
 
 interface CoursesSectionProps {
@@ -16,11 +19,20 @@ interface CoursesSectionProps {
 
 export const CoursesSection: React.FC<CoursesSectionProps> = ({ onOpenApply }) => {
   const [activeCourseTab, setActiveCourseTab] = useState<string>('all');
+  const [selectedCoursePhoto, setSelectedCoursePhoto] = useState<GalleryItem | null>(null);
   const { t, language } = useLanguage();
 
   const filteredCourses = activeCourseTab === 'all' 
     ? COURSES_DATA 
     : COURSES_DATA.filter(c => c.id === activeCourseTab);
+
+  const openCoursePhoto = (courseId: string) => {
+    // Find matching gallery photo or construct a gallery item
+    const targetItem = GALLERY_ITEMS.find(g => 
+      courseId === 'travel-hospitality' ? g.id === 'gal-7' || g.id === 'gal-2' : g.id === 'gal-3' || g.id === 'gal-6'
+    ) || GALLERY_ITEMS[0];
+    setSelectedCoursePhoto(targetItem);
+  };
 
   return (
     <section id="courses" className="py-20 bg-slate-50 relative">
@@ -90,7 +102,11 @@ export const CoursesSection: React.FC<CoursesSectionProps> = ({ onOpenApply }) =
               >
                 <div>
                   {/* Card Header Banner with Image */}
-                  <div className="relative h-56 overflow-hidden">
+                  <div 
+                    onClick={() => openCoursePhoto(course.id)}
+                    className="relative h-56 overflow-hidden cursor-pointer"
+                    title={language === 'hi' ? 'फुल-स्क्रीन में देखने हेतु क्लिक करें' : 'Click to enlarge full-screen photo'}
+                  >
                     <img 
                       src={course.image} 
                       alt={course.title} 
@@ -109,9 +125,14 @@ export const CoursesSection: React.FC<CoursesSectionProps> = ({ onOpenApply }) =
                           : (language === 'hi' ? 'कम्युनिकेशन एवं सॉफ्ट स्किल्स' : 'Communication & Soft Skills')}
                       </span>
 
-                      <span className="px-3 py-1 rounded-full text-xs font-bold bg-slate-900/80 text-white backdrop-blur-md border border-white/20">
-                        {language === 'hi' ? '3 माह' : course.duration}
-                      </span>
+                      <div className="flex items-center gap-1.5">
+                        <span className="p-1.5 rounded-full bg-black/40 backdrop-blur-md text-white opacity-0 group-hover:opacity-100 transition-opacity border border-white/20">
+                          <Eye className="w-3.5 h-3.5" />
+                        </span>
+                        <span className="px-3 py-1 rounded-full text-xs font-bold bg-slate-900/80 text-white backdrop-blur-md border border-white/20">
+                          {language === 'hi' ? '3 माह' : course.duration}
+                        </span>
+                      </div>
                     </div>
 
                     {/* Bottom Course Title on Banner */}
@@ -217,6 +238,17 @@ export const CoursesSection: React.FC<CoursesSectionProps> = ({ onOpenApply }) =
         </div>
 
       </div>
+
+      {/* Lightbox Modal for Course Photos */}
+      {selectedCoursePhoto && (
+        <LightboxModal
+          item={selectedCoursePhoto}
+          items={GALLERY_ITEMS}
+          onClose={() => setSelectedCoursePhoto(null)}
+          onNavigate={(index) => setSelectedCoursePhoto(GALLERY_ITEMS[index])}
+          onOpenApply={onOpenApply}
+        />
+      )}
     </section>
   );
 };
