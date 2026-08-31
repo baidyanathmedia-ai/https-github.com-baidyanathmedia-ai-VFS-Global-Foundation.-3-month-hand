@@ -1,17 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { 
-  GraduationCap, 
   Menu, 
   X, 
-  MapPin, 
-  Clock, 
   Phone,
   MessageSquare,
   ChevronRight
 } from 'lucide-react';
 import { CONTACT_CONFIG } from '../data/academyData';
 import { useLanguage } from '../context/LanguageContext';
-import { LanguageSwitcher } from './LanguageSwitcher';
 import { VfsLogo } from './VfsLogo';
 
 interface HeaderProps {
@@ -49,53 +45,6 @@ export const Header: React.FC<HeaderProps> = ({ onOpenApply, activeSection }) =>
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-      {/* Top Announcement Bar */}
-      <div className="bg-gradient-to-r from-blue-950 via-blue-900 to-emerald-950 text-white text-xs sm:text-sm py-2 px-4 border-b border-blue-800/40">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
-          <div className="flex items-center gap-2 text-center sm:text-left">
-            <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold bg-emerald-500 text-white animate-pulse">
-              {t.admissionsOpenBadge}
-            </span>
-            <span className="text-blue-100 font-medium truncate">
-              {t.topBarNotice}
-            </span>
-          </div>
-          
-          <div className="flex items-center gap-3 sm:gap-4 text-xs text-blue-200">
-            {/* Direct Helpline / WhatsApp */}
-            <a 
-              href={phoneCallLink}
-              className="flex items-center gap-1.5 font-bold text-white hover:text-emerald-300 transition-colors bg-blue-800/50 hover:bg-blue-800 px-2 py-0.5 rounded-md border border-blue-700/60"
-              title="Call Admission Desk"
-            >
-              <Phone className="w-3 h-3 text-emerald-400" />
-              <span>{CONTACT_CONFIG.PHONE_NUMBER}</span>
-            </a>
-
-            <a 
-              href={whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden md:flex items-center gap-1 text-emerald-300 hover:text-emerald-200 transition-colors font-semibold"
-              title="WhatsApp Admission Desk"
-            >
-              <MessageSquare className="w-3 h-3" />
-              <span>WhatsApp</span>
-            </a>
-
-            <div className="hidden lg:flex items-center gap-1.5">
-              <Clock className="w-3.5 h-3.5 text-emerald-400" />
-              <span>{t.deskHours}</span>
-            </div>
-
-            {/* Topbar Quick Language Switcher */}
-            <div className="flex sm:hidden">
-              <LanguageSwitcher variant="topbar" />
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* Main Navigation Bar */}
       <nav className={`transition-all duration-300 ${
         isScrolled 
@@ -129,21 +78,29 @@ export const Header: React.FC<HeaderProps> = ({ onOpenApply, activeSection }) =>
               })}
             </div>
 
-            {/* Desktop Language Switcher & CTA Button */}
+            {/* Desktop Quick Actions & CTA Button */}
             <div className="hidden sm:flex items-center gap-2 sm:gap-3">
+              {/* Direct Phone Call Button */}
+              <a
+                href={phoneCallLink}
+                className="hidden lg:inline-flex items-center gap-1.5 px-3 py-2 text-xs font-bold text-slate-700 hover:text-blue-700 bg-slate-100 hover:bg-blue-50 border border-slate-200 hover:border-blue-200 rounded-lg transition-colors"
+                title="Call Admission Desk"
+              >
+                <Phone className="w-3.5 h-3.5 text-blue-600" />
+                <span>+91 94311 76637</span>
+              </a>
+
               {/* Direct WhatsApp Pill */}
               <a
                 href={whatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hidden lg:inline-flex items-center gap-1.5 px-3 py-2 text-xs font-bold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 rounded-lg transition-colors"
+                className="hidden md:inline-flex items-center gap-1.5 px-3 py-2 text-xs font-bold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 rounded-lg transition-colors"
+                title="WhatsApp Inquiry"
               >
                 <MessageSquare className="w-3.5 h-3.5 text-emerald-600" />
-                <span>+91 94311 76637</span>
+                <span>WhatsApp</span>
               </a>
-
-              {/* Language Switcher Button Group */}
-              <LanguageSwitcher variant="header" />
 
               <button
                 id="header-apply-btn"
@@ -155,9 +112,15 @@ export const Header: React.FC<HeaderProps> = ({ onOpenApply, activeSection }) =>
               </button>
             </div>
 
-            {/* Mobile Menu Toggle & Mobile Language Switcher */}
+            {/* Mobile Menu Toggle & Direct Call */}
             <div className="flex items-center gap-2 sm:hidden">
-              <LanguageSwitcher variant="topbar" />
+              <a
+                href={phoneCallLink}
+                className="p-2 rounded-lg text-blue-600 bg-blue-50 border border-blue-200"
+                title="Call Desk"
+              >
+                <Phone className="w-4 h-4" />
+              </a>
               <button
                 id="mobile-menu-toggle"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -173,9 +136,6 @@ export const Header: React.FC<HeaderProps> = ({ onOpenApply, activeSection }) =>
         {/* Mobile Dropdown Menu */}
         {mobileMenuOpen && (
           <div className="xl:hidden bg-white border-b border-slate-200 shadow-xl px-4 pt-2 pb-6 space-y-3 mt-2 animate-fadeIn">
-            {/* Mobile Language Switcher */}
-            <LanguageSwitcher variant="mobile" />
-
             {/* Direct Quick Contact Buttons on Mobile */}
             <div className="grid grid-cols-2 gap-2 pt-1">
               <a
@@ -183,7 +143,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenApply, activeSection }) =>
                 className="flex items-center justify-center gap-2 py-2.5 px-3 bg-blue-50 text-blue-700 border border-blue-200 rounded-xl text-xs font-bold"
               >
                 <Phone className="w-3.5 h-3.5" />
-                <span>Call Desk</span>
+                <span>+91 94311 76637</span>
               </a>
               <a
                 href={whatsappLink}
@@ -233,3 +193,4 @@ export const Header: React.FC<HeaderProps> = ({ onOpenApply, activeSection }) =>
     </header>
   );
 };
+

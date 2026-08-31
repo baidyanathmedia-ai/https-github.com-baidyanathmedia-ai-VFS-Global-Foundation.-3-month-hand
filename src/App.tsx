@@ -15,6 +15,7 @@ import { ApplySection } from './components/ApplySection';
 import { CtaSection } from './components/CtaSection';
 import { FaqSection } from './components/FaqSection';
 import { ContactSection } from './components/ContactSection';
+import { BottomMarqueeSection } from './components/BottomMarqueeSection';
 import { Footer } from './components/Footer';
 import { ApplyModal } from './components/ApplyModal';
 import { ArrowRight, ChevronUp, MessageCircle } from 'lucide-react';
@@ -128,6 +129,9 @@ export default function App() {
 
         {/* 14. Contact Academy & STPI Map */}
         <ContactSection />
+
+        {/* 15. Responsive Animated Marquee Section */}
+        <BottomMarqueeSection onOpenApply={handleOpenApply} />
       </main>
 
       {/* Footer */}
