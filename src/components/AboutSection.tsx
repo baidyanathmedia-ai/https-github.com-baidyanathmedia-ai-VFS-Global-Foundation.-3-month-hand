@@ -1,0 +1,163 @@
+import React from 'react';
+import { 
+  Building2, 
+  MapPin, 
+  Target, 
+  GraduationCap, 
+  ExternalLink 
+} from 'lucide-react';
+import { CONTACT_CONFIG } from '../data/academyData';
+import { useLanguage } from '../context/LanguageContext';
+
+export const AboutSection: React.FC = () => {
+  const { t, language } = useLanguage();
+
+  return (
+    <section id="about" className="py-20 bg-white relative overflow-hidden">
+      {/* Background Subtle Highlights */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-blue-50/60 rounded-full blur-3xl -z-10" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-emerald-50/60 rounded-full blur-3xl -z-10" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Section Heading */}
+        <div className="text-center max-w-3xl mx-auto space-y-3 mb-16">
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold uppercase tracking-wider">
+            <Building2 className="w-3.5 h-3.5" />
+            <span>{t.aboutTag}</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+            {t.aboutTitle}
+          </h2>
+          <p className="text-slate-600 text-base sm:text-lg">
+            {language === 'hi' 
+              ? 'VFS Global Foundation के अंतर्गत STPI देवघर में व्यावहारिक कौशल एवं संचार प्रशिक्षण।'
+              : 'Empowering students with industry-relevant vocational and communication competencies under VFS Global Foundation at STPI Deoghar.'}
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          {/* Left Text & Mission Details */}
+          <div className="lg:col-span-7 space-y-6">
+            <div className="space-y-4 text-slate-700 text-base sm:text-lg leading-relaxed">
+              <p className="font-medium text-slate-800">
+                <span className="font-bold text-blue-700">VFS Global Academy</span> {t.aboutDesc1}
+              </p>
+              
+              <p>
+                {t.aboutDesc2}
+              </p>
+            </div>
+
+            {/* Core Pillars */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+              <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/80 flex items-start gap-3">
+                <div className="p-2 rounded-lg bg-blue-100 text-blue-700 mt-0.5">
+                  <Target className="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 className="text-sm font-bold text-slate-900">{t.why4Title}</h4>
+                  <p className="text-xs text-slate-600 mt-1">
+                    {language === 'hi' ? 'रोल-प्ले, सार्वजनिक संभाषण और वास्तविक कस्टमर डीलिंग अभ्यास।' : 'Roleplay sessions, public speaking, and simulated customer handling.'}
+                  </p>
+                </div>
+              </div>
+
+              <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/80 flex items-start gap-3">
+                <div className="p-2 rounded-lg bg-emerald-100 text-emerald-700 mt-0.5">
+                  <GraduationCap className="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 className="text-sm font-bold text-slate-900">{t.why5Title}</h4>
+                  <p className="text-xs text-slate-600 mt-1">
+                    {language === 'hi' ? 'बायोडाटा निर्माण, व्यक्तित्व निखार और मॉक इंटरव्यू सत्र।' : 'Resume building, personality refinement, and mock interviews.'}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Verified Location Card */}
+            <div className="p-6 rounded-2xl bg-gradient-to-br from-blue-50/80 to-emerald-50/80 border border-blue-200/80 shadow-sm space-y-3">
+              <div className="flex items-center gap-2 text-blue-900 font-bold text-base">
+                <MapPin className="w-5 h-5 text-blue-600" />
+                <span>{language === 'hi' ? 'केंद्र का पता (Landmark):' : 'Centre Location:'}</span>
+              </div>
+              
+              <div className="text-sm text-slate-800 space-y-1 font-medium pl-7">
+                <div className="font-bold text-slate-900">STPI, Deoghar (Jasidih)</div>
+                <div>Near Swagat Petrol Pump</div>
+                <div>Manikpur Road, After Railway Over Bridge</div>
+                <div className="text-slate-700">Jasidih, Deoghar, Jharkhand, PIN - 814142</div>
+              </div>
+
+              <div className="pl-7 pt-2 flex flex-wrap items-center gap-4 text-xs font-semibold">
+                <a 
+                  href={CONTACT_CONFIG.GOOGLE_MAPS_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-blue-700 hover:text-blue-900 underline"
+                >
+                  <span>{language === 'hi' ? 'गूगल मैप्स पर देखें' : 'Open in Google Maps'}</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+                <span className="text-slate-400">•</span>
+                <span className="text-emerald-700">{t.deskHours}</span>
+              </div>
+            </div>
+
+          </div>
+
+          {/* Right Image Showcase */}
+          <div className="lg:col-span-5 space-y-4">
+            <div className="relative rounded-2xl overflow-hidden shadow-xl border border-slate-200 group">
+              <img 
+                src="/src/assets/images/stpi_convocation_campus_1788153690739.jpg" 
+                alt="STPI Deoghar Centre Convocation" 
+                className="w-full h-72 sm:h-80 object-cover group-hover:scale-105 transition-transform duration-500"
+                referrerPolicy="no-referrer"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-5">
+                <div className="text-white">
+                  <div className="text-xs font-semibold px-2.5 py-1 rounded bg-emerald-600 inline-block mb-1">
+                    STPI Deoghar Campus
+                  </div>
+                  <h4 className="text-lg font-bold">Software Technology Parks of India</h4>
+                  <p className="text-xs text-slate-200">Manikpur Road, Jasidih, Deoghar (Jharkhand)</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              <div className="rounded-xl overflow-hidden border border-slate-200 relative h-36">
+                <img 
+                  src="/src/assets/images/vfs_reception_batch_1788153734515.jpg" 
+                  alt="VFS Academy Reception Desk" 
+                  className="w-full h-full object-cover"
+                  referrerPolicy="no-referrer"
+                />
+                <div className="absolute inset-0 bg-slate-950/50 p-2.5 flex items-end">
+                  <span className="text-xs font-bold text-white">{language === 'hi' ? 'अकादमी रिसेप्शन डेस्क' : 'Academy Reception'}</span>
+                </div>
+              </div>
+
+              <div className="rounded-xl overflow-hidden border border-slate-200 relative h-36">
+                <img 
+                  src="/src/assets/images/vfs_certificate_award_1788153716243.jpg" 
+                  alt="Certificate Distribution" 
+                  className="w-full h-full object-cover"
+                  referrerPolicy="no-referrer"
+                />
+                <div className="absolute inset-0 bg-slate-950/50 p-2.5 flex items-end">
+                  <span className="text-xs font-bold text-white">{language === 'hi' ? 'सर्टिफिकेट वितरण' : 'Certificate Ceremony'}</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+};

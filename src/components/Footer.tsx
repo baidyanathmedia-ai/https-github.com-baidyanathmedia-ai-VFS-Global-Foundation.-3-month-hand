@@ -1,0 +1,171 @@
+import React from 'react';
+import { 
+  GraduationCap, 
+  MapPin, 
+  Clock, 
+  ShieldCheck, 
+  ArrowUp,
+  ExternalLink,
+  Award
+} from 'lucide-react';
+import { CONTACT_CONFIG } from '../data/academyData';
+import { useLanguage } from '../context/LanguageContext';
+import { VfsLogo } from './VfsLogo';
+
+export const Footer: React.FC = () => {
+  const { t, language } = useLanguage();
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  return (
+    <footer className="bg-slate-950 text-slate-400 text-xs sm:text-sm border-t border-slate-800 relative">
+      
+      {/* Top Main Footer Grid */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10">
+          
+          {/* Col 1: Brand & Foundation Info */}
+          <div className="lg:col-span-4 space-y-4">
+            <div className="text-white">
+              <VfsLogo variant="dark" size="md" showSubtitle={true} />
+            </div>
+
+            <p className="text-xs text-slate-400 leading-relaxed">
+              {language === 'hi'
+                ? 'एसटीपीआई देवघर केंद्र में ट्रेवल, हॉस्पिटैलिटी मैनेजमेंट, भाषा और व्यावसायिक संचार में उद्योग-प्रासंगिक कौशल के साथ युवाओं को सशक्त बनाना।'
+                : 'Empowering students with industry-relevant skills in Travel, Hospitality Management, Language and Professional Communication at the STPI Deoghar Centre.'}
+            </p>
+
+            <div className="pt-2 text-xs text-slate-300 space-y-1">
+              <div className="flex items-center gap-2 text-slate-300 font-medium">
+                <Award className="w-4 h-4 text-emerald-400" />
+                <span>{language === 'hi' ? '3 माह का सर्टिफिकेट कोर्स' : '3-Month Certificate Programmes'}</span>
+              </div>
+              <div className="flex items-center gap-2 text-slate-300 font-medium">
+                <ShieldCheck className="w-4 h-4 text-blue-400" />
+                <span>{language === 'hi' ? 'प्रति बैच अधिकतम 30 छात्र' : 'Max 30 Students Per Batch Discipline'}</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Col 2: Quick Links */}
+          <div className="lg:col-span-2 space-y-3">
+            <h4 className="text-xs font-bold text-white uppercase tracking-wider">
+              {language === 'hi' ? 'त्वरित लिंक' : 'Quick Links'}
+            </h4>
+            <ul className="space-y-2 text-xs">
+              <li>
+                <a href="#home" className="hover:text-blue-400 transition-colors">{t.navHome}</a>
+              </li>
+              <li>
+                <a href="#about" className="hover:text-blue-400 transition-colors">{t.navAbout}</a>
+              </li>
+              <li>
+                <a href="#why-choose-us" className="hover:text-blue-400 transition-colors">{t.navWhyChooseUs}</a>
+              </li>
+              <li>
+                <a href="#courses" className="hover:text-blue-400 transition-colors">{t.navCourses}</a>
+              </li>
+              <li>
+                <a href="#schedule" className="hover:text-blue-400 transition-colors">{t.navSchedule}</a>
+              </li>
+              <li>
+                <a href="#admission" className="hover:text-blue-400 transition-colors">{t.navAdmission}</a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Col 3: Academic & Community */}
+          <div className="lg:col-span-2 space-y-3">
+            <h4 className="text-xs font-bold text-white uppercase tracking-wider">
+              {language === 'hi' ? 'कैंपस एवं संपर्क' : 'Campus & Support'}
+            </h4>
+            <ul className="space-y-2 text-xs">
+              <li>
+                <a href="#gallery" className="hover:text-blue-400 transition-colors">{t.navGallery}</a>
+              </li>
+              <li>
+                <a href="#leadership" className="hover:text-blue-400 transition-colors">{t.navLeadership}</a>
+              </li>
+              <li>
+                <a href="#testimonials" className="hover:text-blue-400 transition-colors">{t.navTestimonials}</a>
+              </li>
+              <li>
+                <a href="#notices" className="hover:text-blue-400 transition-colors">{t.navNotices}</a>
+              </li>
+              <li>
+                <a href="#faqs" className="hover:text-blue-400 transition-colors">{t.navFaq}</a>
+              </li>
+              <li>
+                <a href="#contact" className="hover:text-blue-400 transition-colors">{t.navContact}</a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Col 4: Centre Location & Timing */}
+          <div className="lg:col-span-4 space-y-3">
+            <h4 className="text-xs font-bold text-white uppercase tracking-wider">
+              {language === 'hi' ? 'केंद्र का पता एवं समय' : 'Centre Location & Desk Hours'}
+            </h4>
+            <div className="text-xs text-slate-400 space-y-2 leading-relaxed">
+              <div className="flex items-start gap-2">
+                <MapPin className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                <span>
+                  <strong>STPI, Deoghar (Jasidih)</strong><br />
+                  {language === 'hi' ? 'स्वागत पेट्रोल पंप के पास, मणिकपुर रोड' : 'Near Swagat Petrol Pump, Manikpur Road'}<br />
+                  {language === 'hi' ? 'रेलवे ओवर ब्रिज के बाद, जसीडीह, देवघर, झारखंड' : 'After Railway Over Bridge, Jasidih, Deoghar, Jharkhand, India'}
+                </span>
+              </div>
+
+              <div className="flex items-center gap-2 pt-1 text-slate-300">
+                <Clock className="w-4 h-4 text-blue-400 shrink-0" />
+                <span>{language === 'hi' ? 'कार्यालय / डेस्क समय:' : 'Office / Desk Timing:'} <strong>10:00 AM – 01:00 PM</strong></span>
+              </div>
+
+              <div className="pt-2">
+                <a 
+                  href={CONTACT_CONFIG.GOOGLE_MAPS_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs text-blue-400 hover:text-blue-300 underline font-semibold"
+                >
+                  <span>{language === 'hi' ? 'गूगल मैप पर दिशा-निर्देश देखें' : 'Open Directions on Google Maps'}</span>
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        {/* Official Foundation Disclaimer Box */}
+        <div className="mt-12 p-4 rounded-xl bg-slate-900/90 border border-slate-800 text-xs text-slate-400 leading-relaxed">
+          <p>
+            <strong className="text-slate-300">{language === 'hi' ? 'आधिकारिक सूचना:' : 'Official Disclaimer:'}</strong>{' '}
+            {language === 'hi'
+              ? 'यह वेबसाइट STPI जसीडीह, देवघर (झारखंड, भारत) में VFS Global Foundation के अधीन संचालित VFS Global Academy का प्रतिनिधित्व करती है। यह पोर्टल मुख्य रूप से ट्रेवल, हॉस्पिटैलिटी मैनेजमेंट तथा लैंग्वेज एवं कम्युनिकेशन में सर्टिफिकेट प्रशिक्षण और क्षेत्रीय कौशल विकास के लिए समर्पित है।'
+              : 'This website represents VFS Global Academy, operated under the VFS Global Foundation at the Software Technology Parks of India (STPI) centre in Jasidih, Deoghar (Jharkhand, India). This portal is dedicated specifically to vocational student training, certificate courses in Travel, Hospitality Management, and Language & Communication, and regional skill development initiatives.'}
+          </p>
+        </div>
+
+        {/* Bottom Copyright & Back to Top */}
+        <div className="mt-8 pt-6 border-t border-slate-900 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+          <p className="text-slate-500 text-center sm:text-left">
+            © 2026 VFS Global Academy. Operated under VFS Global Foundation. All rights reserved.
+          </p>
+
+          <button
+            onClick={scrollToTop}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 text-xs transition-colors cursor-pointer"
+          >
+            <span>{language === 'hi' ? 'शीर्ष पर जाएं' : 'Back to Top'}</span>
+            <ArrowUp className="w-3.5 h-3.5" />
+          </button>
+        </div>
+
+      </div>
+    </footer>
+  );
+};

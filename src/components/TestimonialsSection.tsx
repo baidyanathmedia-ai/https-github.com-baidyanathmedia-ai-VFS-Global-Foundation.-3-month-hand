@@ -1,0 +1,93 @@
+import React from 'react';
+import { 
+  Quote, 
+  Star, 
+  MessageSquare 
+} from 'lucide-react';
+import { TESTIMONIALS_DATA } from '../data/academyData';
+import { useLanguage } from '../context/LanguageContext';
+
+export const TestimonialsSection: React.FC = () => {
+  const { t, language } = useLanguage();
+
+  return (
+    <section id="testimonials" className="py-20 bg-slate-50 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Section Heading */}
+        <div className="text-center max-w-3xl mx-auto space-y-3 mb-16">
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-bold uppercase tracking-wider">
+            <MessageSquare className="w-3.5 h-3.5" />
+            <span>{t.testimonialsTag}</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+            {t.testimonialsTitle}
+          </h2>
+          <p className="text-slate-600 text-base sm:text-lg">
+            {t.testimonialsSubtitle}
+          </p>
+        </div>
+
+        {/* Testimonials Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {TESTIMONIALS_DATA.map((item) => (
+            <div
+              key={item.id}
+              className="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between hover:-translate-y-1 group"
+            >
+              <div className="space-y-4">
+                {/* Star rating & Course badge */}
+                <div className="flex items-center justify-between">
+                  <div className="flex text-amber-400">
+                    {[...Array(item.rating)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                    ))}
+                  </div>
+                  <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700">
+                    {language === 'hi' ? 'प्रमाणित छात्र' : 'Verified Learner'}
+                  </span>
+                </div>
+
+                {/* Quote */}
+                <div className="relative">
+                  <Quote className="w-6 h-6 text-slate-200 group-hover:text-blue-100 transition-colors" />
+                  <p className="text-slate-700 text-sm leading-relaxed italic mt-1">
+                    "{item.quote}"
+                  </p>
+                </div>
+              </div>
+
+              {/* Student Metadata */}
+              <div className="pt-4 mt-4 border-t border-slate-100 flex items-center gap-3">
+                <div className={`w-10 h-10 rounded-full ${item.avatarBg || 'bg-blue-600 text-white'} flex items-center justify-center font-bold text-sm shadow-sm`}>
+                  {item.name.charAt(0)}
+                </div>
+                <div>
+                  <h4 className="text-sm font-bold text-slate-900 leading-tight">
+                    {item.name}
+                  </h4>
+                  <p className="text-[11px] text-slate-500 line-clamp-1">
+                    {item.course}
+                  </p>
+                  <p className="text-[10px] text-emerald-600 font-semibold">
+                    {item.batch}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Code Notice / Helper Note for editing */}
+        <div className="mt-12 text-center text-xs text-slate-500">
+          <span className="italic">
+            {language === 'hi' 
+              ? 'नोट: STPI देवघर के पूर्व छात्रों के वास्तविक अनुभव।' 
+              : 'Certified alumni experiences at STPI Deoghar centre under VFS Global Foundation.'}
+          </span>
+        </div>
+
+      </div>
+    </section>
+  );
+};

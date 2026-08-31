@@ -1,0 +1,222 @@
+import React, { useState } from 'react';
+import { 
+  BookOpen, 
+  Clock, 
+  Calendar, 
+  CheckCircle, 
+  ArrowRight, 
+  Award
+} from 'lucide-react';
+import { COURSES_DATA } from '../data/academyData';
+import { useLanguage } from '../context/LanguageContext';
+
+interface CoursesSectionProps {
+  onOpenApply: (courseId?: string) => void;
+}
+
+export const CoursesSection: React.FC<CoursesSectionProps> = ({ onOpenApply }) => {
+  const [activeCourseTab, setActiveCourseTab] = useState<string>('all');
+  const { t, language } = useLanguage();
+
+  const filteredCourses = activeCourseTab === 'all' 
+    ? COURSES_DATA 
+    : COURSES_DATA.filter(c => c.id === activeCourseTab);
+
+  return (
+    <section id="courses" className="py-20 bg-slate-50 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Section Heading */}
+        <div className="text-center max-w-3xl mx-auto space-y-3 mb-12">
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-bold uppercase tracking-wider">
+            <BookOpen className="w-3.5 h-3.5" />
+            <span>{t.coursesTag}</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+            {t.coursesTitle}
+          </h2>
+          <p className="text-slate-600 text-base sm:text-lg">
+            {t.coursesSubtitle}
+          </p>
+        </div>
+
+        {/* Filter Pills */}
+        <div className="flex justify-center gap-2 mb-12 flex-wrap">
+          <button
+            onClick={() => setActiveCourseTab('all')}
+            className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all cursor-pointer ${
+              activeCourseTab === 'all'
+                ? 'bg-blue-700 text-white shadow-md'
+                : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200'
+            }`}
+          >
+            {language === 'hi' ? 'सभी कोर्सेज (2)' : 'All Courses (2)'}
+          </button>
+          <button
+            onClick={() => setActiveCourseTab('travel-hospitality')}
+            className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all cursor-pointer ${
+              activeCourseTab === 'travel-hospitality'
+                ? 'bg-blue-700 text-white shadow-md'
+                : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200'
+            }`}
+          >
+            {language === 'hi' ? 'ट्रेवल एवं हॉस्पिटैलिटी' : 'Travel & Hospitality'}
+          </button>
+          <button
+            onClick={() => setActiveCourseTab('language-communication')}
+            className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all cursor-pointer ${
+              activeCourseTab === 'language-communication'
+                ? 'bg-blue-700 text-white shadow-md'
+                : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200'
+            }`}
+          >
+            {language === 'hi' ? 'लैंग्वेज एवं कम्युनिकेशन' : 'Language & Communication'}
+          </button>
+        </div>
+
+        {/* Course Cards Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+          {filteredCourses.map((course) => {
+            const isTravel = course.id === 'travel-hospitality';
+            const courseTitle = isTravel ? t.course1Title : t.course2Title;
+            const courseSubtitle = isTravel ? t.course1Subtitle : t.course2Subtitle;
+            const courseDesc = isTravel ? t.course1Desc : t.course2Desc;
+
+            return (
+              <div
+                key={course.id}
+                id={`course-card-${course.id}`}
+                className="bg-white rounded-2xl border border-slate-200 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between overflow-hidden group"
+              >
+                <div>
+                  {/* Card Header Banner with Image */}
+                  <div className="relative h-56 overflow-hidden">
+                    <img 
+                      src={course.image} 
+                      alt={course.title} 
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      referrerPolicy="no-referrer"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
+                    
+                    {/* Top Badges */}
+                    <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
+                      <span className={`px-3 py-1 rounded-full text-xs font-bold text-white shadow-md ${
+                        isTravel ? 'bg-blue-600' : 'bg-emerald-600'
+                      }`}>
+                        {isTravel 
+                          ? (language === 'hi' ? 'हॉस्पिटैलिटी एवं टूरिज्म' : 'Hospitality & Tourism')
+                          : (language === 'hi' ? 'कम्युनिकेशन एवं सॉफ्ट स्किल्स' : 'Communication & Soft Skills')}
+                      </span>
+
+                      <span className="px-3 py-1 rounded-full text-xs font-bold bg-slate-900/80 text-white backdrop-blur-md border border-white/20">
+                        {language === 'hi' ? '3 माह' : course.duration}
+                      </span>
+                    </div>
+
+                    {/* Bottom Course Title on Banner */}
+                    <div className="absolute bottom-4 left-4 right-4 text-white">
+                      <h3 className="text-2xl font-extrabold tracking-tight">
+                        {courseTitle}
+                      </h3>
+                      <p className="text-xs text-blue-200 mt-1 line-clamp-1">
+                        {courseSubtitle}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Body Content */}
+                  <div className="p-6 sm:p-7 space-y-6">
+                    
+                    {/* Description */}
+                    <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+                      {courseDesc}
+                    </p>
+
+                    {/* Schedule Quick Specs */}
+                    <div className="grid grid-cols-2 gap-3 p-3.5 rounded-xl bg-slate-50 border border-slate-200/70 text-xs">
+                      <div className="flex items-center gap-2 text-slate-700">
+                        <Clock className="w-4 h-4 text-blue-600 shrink-0" />
+                        <div>
+                          <span className="text-slate-400 block">{language === 'hi' ? 'कक्षा समय:' : 'Timing:'}</span>
+                          <span className="font-bold">{language === 'hi' ? 'सुबह 10:00 से दोपहर 01:00' : '10:00 AM – 01:00 PM'}</span>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center gap-2 text-slate-700">
+                        <Calendar className="w-4 h-4 text-emerald-600 shrink-0" />
+                        <div>
+                          <span className="text-slate-400 block">{language === 'hi' ? 'दिन:' : 'Class Days:'}</span>
+                          <span className="font-bold">{language === 'hi' ? 'शुक्र, शनि एवं रवि' : 'Fri, Sat & Sun (3 Days)'}</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Topics Covered */}
+                    <div className="space-y-3">
+                      <h4 className="text-xs font-bold text-slate-900 uppercase tracking-wider flex items-center gap-1.5">
+                        <Award className="w-4 h-4 text-blue-600" />
+                        <span>{t.courseKeyTopicsLabel}</span>
+                      </h4>
+
+                      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm text-slate-700">
+                        {course.topics.map((topic, i) => (
+                          <li key={i} className="flex items-start gap-2">
+                            <CheckCircle className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                            <span>{topic}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Career Outcomes */}
+                    <div className="pt-2 border-t border-slate-100 space-y-2">
+                      <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider">
+                        {t.courseCareerOutcomesLabel}
+                      </h4>
+                      <div className="flex flex-wrap gap-1.5">
+                        {course.careerOutcomes.map((career, i) => (
+                          <span 
+                            key={i} 
+                            className="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 text-xs font-medium"
+                          >
+                            {career}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+                {/* Footer Action Button */}
+                <div className="p-6 pt-0 sm:p-7 sm:pt-0">
+                  <button
+                    id={`apply-now-${course.id}`}
+                    onClick={() => onOpenApply(course.id)}
+                    className="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-blue-600 to-emerald-600 hover:from-blue-700 hover:to-emerald-700 text-white font-bold shadow-md hover:shadow-lg transition-all duration-200 flex items-center justify-center gap-2 text-sm cursor-pointer"
+                  >
+                    <span>{language === 'hi' ? `${courseTitle} के लिए आवेदन करें` : `Apply Now for ${course.title}`}</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                </div>
+
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Bottom Certificate Verification Notice */}
+        <div className="mt-12 text-center text-xs text-slate-500 flex items-center justify-center gap-2">
+          <Award className="w-4 h-4 text-emerald-600" />
+          <span>
+            {language === 'hi'
+              ? '3 माह का पाठ्यक्रम पूर्ण करने एवं मूल्यांकन के उपरांत VFS Global Foundation द्वारा सर्टिफिकेट प्रदान किया जाता है।'
+              : 'Certificate awarded by VFS Global Foundation upon 3-month curriculum completion and assessment.'}
+          </span>
+        </div>
+
+      </div>
+    </section>
+  );
+};

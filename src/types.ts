@@ -1,0 +1,81 @@
+export interface Course {
+  id: string;
+  title: string;
+  subtitle: string;
+  duration: string;
+  classesPerWeek: string;
+  timings: string;
+  description: string;
+  topics: string[];
+  careerOutcomes: string[];
+  batchSize: number;
+  featured?: boolean;
+  image?: string;
+}
+
+export interface GalleryItem {
+  id: string;
+  title: string;
+  category: 'Training Sessions' | 'Certificate Distribution' | 'Student Activities' | 'Educational Visits' | 'Campus Life';
+  description: string;
+  image: string;
+  location?: string;
+  date?: string;
+  featured?: boolean;
+}
+
+export interface Testimonial {
+  id: string;
+  name: string;
+  role: string;
+  course: string;
+  batch: string;
+  quote: string;
+  rating: number;
+  avatarBg?: string;
+}
+
+export interface Notice {
+  id: string;
+  title: string;
+  date: string;
+  category: 'Admission' | 'Schedule' | 'Exam & Cert' | 'General';
+  isNew?: boolean;
+  isUrgent?: boolean;
+  summary: string;
+  details: string[];
+}
+
+export interface FAQItem {
+  id: number;
+  question: string;
+  answer: string;
+}
+
+export interface ApplicationFormData {
+  fullName: string;
+  fatherName: string;
+  mobileNumber: string;
+  emailAddress: string;
+  dob: string;
+  gender: string;
+  address: string;
+  city: string;
+  district: string;
+  state: string;
+  highestQualification: string;
+  selectedCourse: string;
+  markSheetFile: File | null;
+  markSheetFileName?: string;
+  aadhaarFile: File | null;
+  aadhaarFileName?: string;
+  agreedToTerms: boolean;
+}
+
+export interface ContactFormData {
+  name: string;
+  email: string;
+  phone: string;
+  courseInterest: string;
+  message: string;
+}
