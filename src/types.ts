@@ -61,6 +61,8 @@ export interface LeadershipProfile {
   guidanceAreas: string[];
   quote: string;
   image: string;
+  secondaryImage?: string;
+  secondaryImageTitle?: string;
 }
 
 export interface FacultyProfile {
@@ -73,6 +75,8 @@ export interface FacultyProfile {
   expertiseAreas: string[];
   quote: string;
   image: string;
+  secondaryImage?: string;
+  secondaryImageTitle?: string;
   badge?: string;
 }
 

@@ -42,19 +42,19 @@ export const FaqSection: React.FC = () => {
   };
 
   return (
-    <section id="faqs" className="py-20 bg-white relative">
+    <section id="faqs" className="py-20 bg-white dark:bg-slate-950 relative transition-colors duration-200">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Heading */}
         <div className="text-center space-y-3 mb-12">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-bold uppercase tracking-wider">
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-blue-100 dark:bg-blue-950/70 text-blue-800 dark:text-blue-300 border border-blue-200 dark:border-blue-800/60 text-xs font-bold uppercase tracking-wider">
             <HelpCircle className="w-3.5 h-3.5" />
             <span>{t.faqTag}</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
             {t.faqTitle}
           </h2>
-          <p className="text-slate-600 text-base sm:text-lg">
+          <p className="text-slate-600 dark:text-slate-300 text-base sm:text-lg">
             {t.faqSubtitle}
           </p>
         </div>
@@ -70,8 +70,8 @@ export const FaqSection: React.FC = () => {
                 id={`faq-item-${faq.id}`}
                 className={`rounded-2xl border transition-all duration-200 overflow-hidden ${
                   isOpen 
-                    ? 'border-blue-300 bg-blue-50/40 shadow-sm' 
-                    : 'border-slate-200 bg-slate-50/60 hover:bg-slate-50'
+                    ? 'border-blue-300 dark:border-blue-800/80 bg-blue-50/50 dark:bg-blue-950/30 shadow-sm' 
+                    : 'border-slate-200 dark:border-slate-800/80 bg-slate-50/60 dark:bg-slate-900/60 hover:bg-slate-50 dark:hover:bg-slate-900'
                 }`}
               >
                 <button
@@ -80,23 +80,23 @@ export const FaqSection: React.FC = () => {
                   className="w-full py-4.5 px-6 text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-none"
                   aria-expanded={isOpen}
                 >
-                  <span className="text-base font-bold text-slate-900 flex items-center gap-3">
-                    <span className="w-7 h-7 rounded-lg bg-blue-100 text-blue-700 text-xs font-extrabold flex items-center justify-center shrink-0">
+                  <span className="text-base font-bold text-slate-900 dark:text-white flex items-center gap-3">
+                    <span className="w-7 h-7 rounded-lg bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 text-xs font-extrabold flex items-center justify-center shrink-0">
                       {faq.id}
                     </span>
                     <span>{getFaqQuestion(faq)}</span>
                   </span>
                   
-                  <div className={`p-1.5 rounded-full bg-white text-slate-500 shadow-xs transition-transform duration-300 shrink-0 ${
-                    isOpen ? 'rotate-180 text-blue-600 bg-blue-100' : ''
+                  <div className={`p-1.5 rounded-full bg-white dark:bg-slate-800 text-slate-500 dark:text-slate-400 shadow-xs transition-transform duration-300 shrink-0 ${
+                    isOpen ? 'rotate-180 text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-950' : ''
                   }`}>
                     <ChevronDown className="w-4 h-4" />
                   </div>
                 </button>
 
                 {isOpen && (
-                  <div className="px-6 pb-5 pt-1 text-slate-700 text-sm sm:text-base leading-relaxed pl-16 border-t border-blue-100/60 animate-fadeIn">
-                    <p className="font-medium text-slate-800">
+                  <div className="px-6 pb-5 pt-1 text-slate-700 dark:text-slate-300 text-sm sm:text-base leading-relaxed pl-16 border-t border-blue-100/60 dark:border-slate-800 animate-fadeIn">
+                    <p className="font-medium text-slate-800 dark:text-slate-200">
                       {getFaqAnswer(faq)}
                     </p>
                   </div>

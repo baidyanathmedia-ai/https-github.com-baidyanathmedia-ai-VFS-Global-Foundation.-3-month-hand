@@ -24,19 +24,19 @@ export const ScheduleSection: React.FC = () => {
   ];
 
   return (
-    <section id="schedule" className="py-20 bg-white relative">
+    <section id="schedule" className="py-20 bg-white dark:bg-slate-950 relative transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Heading */}
         <div className="text-center max-w-3xl mx-auto space-y-3 mb-16">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold uppercase tracking-wider">
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-emerald-100 dark:bg-emerald-950/70 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60 text-xs font-bold uppercase tracking-wider">
             <Calendar className="w-3.5 h-3.5" />
             <span>{t.scheduleTag}</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
             {t.scheduleTitle}
           </h2>
-          <p className="text-slate-600 text-base sm:text-lg">
+          <p className="text-slate-600 dark:text-slate-300 text-base sm:text-lg">
             {t.scheduleSubtitle}
           </p>
         </div>
@@ -44,40 +44,40 @@ export const ScheduleSection: React.FC = () => {
         {/* Highlights Bar: 4 Metric Cards */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-12">
           
-          <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-5 sm:p-6 text-center space-y-1 hover:border-blue-300 transition-colors">
-            <div className="w-10 h-10 mx-auto rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center mb-3">
+          <div className="bg-slate-50 dark:bg-slate-900/80 border border-slate-200/80 dark:border-slate-800 rounded-2xl p-5 sm:p-6 text-center space-y-1 hover:border-blue-300 dark:hover:border-blue-500/50 transition-colors">
+            <div className="w-10 h-10 mx-auto rounded-xl bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 flex items-center justify-center mb-3">
               <Clock className="w-5 h-5" />
             </div>
-            <span className="text-xs text-slate-500 font-bold uppercase tracking-wider">{t.courseDurationLabel}</span>
-            <div className="text-2xl sm:text-3xl font-extrabold text-slate-900">{t.heroStat1Value}</div>
-            <div className="text-xs text-slate-600">{language === 'hi' ? 'फास्ट-ट्रैक सर्टिफिकेट' : 'Comprehensive training'}</div>
+            <span className="text-xs text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wider">{t.courseDurationLabel}</span>
+            <div className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">{t.heroStat1Value}</div>
+            <div className="text-xs text-slate-600 dark:text-slate-400">{language === 'hi' ? 'फास्ट-ट्रैक सर्टिफिकेट' : 'Comprehensive training'}</div>
           </div>
 
-          <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-5 sm:p-6 text-center space-y-1 hover:border-emerald-300 transition-colors">
-            <div className="w-10 h-10 mx-auto rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center mb-3">
+          <div className="bg-slate-50 dark:bg-slate-900/80 border border-slate-200/80 dark:border-slate-800 rounded-2xl p-5 sm:p-6 text-center space-y-1 hover:border-emerald-300 dark:hover:border-emerald-500/50 transition-colors">
+            <div className="w-10 h-10 mx-auto rounded-xl bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 flex items-center justify-center mb-3">
               <Calendar className="w-5 h-5" />
             </div>
-            <span className="text-xs text-slate-500 font-bold uppercase tracking-wider">{t.courseScheduleLabel}</span>
-            <div className="text-2xl sm:text-3xl font-extrabold text-emerald-700">{t.heroStat2Value}</div>
-            <div className="text-xs text-slate-600">{language === 'hi' ? 'शुक्र, शनि व रवि' : 'Fri, Sat & Sun'}</div>
+            <span className="text-xs text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wider">{t.courseScheduleLabel}</span>
+            <div className="text-2xl sm:text-3xl font-extrabold text-emerald-700 dark:text-emerald-400">{t.heroStat2Value}</div>
+            <div className="text-xs text-slate-600 dark:text-slate-400">{language === 'hi' ? 'शुक्र, शनि व रवि' : 'Fri, Sat & Sun'}</div>
           </div>
 
-          <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-5 sm:p-6 text-center space-y-1 hover:border-blue-300 transition-colors">
-            <div className="w-10 h-10 mx-auto rounded-xl bg-sky-100 text-sky-700 flex items-center justify-center mb-3">
+          <div className="bg-slate-50 dark:bg-slate-900/80 border border-slate-200/80 dark:border-slate-800 rounded-2xl p-5 sm:p-6 text-center space-y-1 hover:border-blue-300 dark:hover:border-blue-500/50 transition-colors">
+            <div className="w-10 h-10 mx-auto rounded-xl bg-sky-100 dark:bg-sky-950 text-sky-700 dark:text-sky-300 flex items-center justify-center mb-3">
               <Sun className="w-5 h-5" />
             </div>
-            <span className="text-xs text-slate-500 font-bold uppercase tracking-wider">{language === 'hi' ? 'कक्षा समय' : 'Class Timing'}</span>
-            <div className="text-2xl sm:text-3xl font-extrabold text-slate-900">10 AM – 1 PM</div>
-            <div className="text-xs text-slate-600">{language === 'hi' ? 'सुबह 10:00 से दोपहर 01:00' : 'Morning session'}</div>
+            <span className="text-xs text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wider">{language === 'hi' ? 'कक्षा समय' : 'Class Timing'}</span>
+            <div className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">10 AM – 1 PM</div>
+            <div className="text-xs text-slate-600 dark:text-slate-400">{language === 'hi' ? 'सुबह 10:00 से दोपहर 01:00' : 'Morning session'}</div>
           </div>
 
-          <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-5 sm:p-6 text-center space-y-1 hover:border-emerald-300 transition-colors">
-            <div className="w-10 h-10 mx-auto rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center mb-3">
+          <div className="bg-slate-50 dark:bg-slate-900/80 border border-slate-200/80 dark:border-slate-800 rounded-2xl p-5 sm:p-6 text-center space-y-1 hover:border-emerald-300 dark:hover:border-emerald-500/50 transition-colors">
+            <div className="w-10 h-10 mx-auto rounded-xl bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 flex items-center justify-center mb-3">
               <Sparkles className="w-5 h-5" />
             </div>
-            <span className="text-xs text-slate-500 font-bold uppercase tracking-wider">{language === 'hi' ? 'दैनिक अवधि' : 'Daily Duration'}</span>
-            <div className="text-2xl sm:text-3xl font-extrabold text-emerald-700">{SCHEDULE_DATA.dailyDuration}</div>
-            <div className="text-xs text-slate-600">{language === 'hi' ? 'गहन प्रशिक्षण' : 'Intensive learning'}</div>
+            <span className="text-xs text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wider">{language === 'hi' ? 'दैनिक अवधि' : 'Daily Duration'}</span>
+            <div className="text-2xl sm:text-3xl font-extrabold text-emerald-700 dark:text-emerald-400">{SCHEDULE_DATA.dailyDuration}</div>
+            <div className="text-xs text-slate-600 dark:text-slate-400">{language === 'hi' ? 'गहन प्रशिक्षण' : 'Intensive learning'}</div>
           </div>
 
         </div>

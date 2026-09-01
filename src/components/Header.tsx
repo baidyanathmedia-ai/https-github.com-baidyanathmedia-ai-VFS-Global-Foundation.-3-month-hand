@@ -19,16 +19,64 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ onOpenApply, activeSection }) => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { t } = useLanguage();
 
   useEffect(() => {
+    let lastScrollY = window.scrollY;
+    let scrollStopTimer: ReturnType<typeof setTimeout> | null = null;
+
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      const currentScrollY = window.scrollY;
+      
+      // Update background blur and shadow when scrolled past top threshold
+      setIsScrolled(currentScrollY > 20);
+
+      // Always show at the top of the page
+      if (currentScrollY <= 30) {
+        setIsVisible(true);
+        lastScrollY = currentScrollY;
+        return;
+      }
+
+      // If mobile dropdown menu is open, do not hide header
+      if (mobileMenuOpen) {
+        setIsVisible(true);
+        lastScrollY = currentScrollY;
+        return;
+      }
+
+      const deltaY = currentScrollY - lastScrollY;
+
+      // Minimum scroll delta threshold to avoid jitter on small touchpad movements
+      if (Math.abs(deltaY) > 6) {
+        if (deltaY > 0 && currentScrollY > 100) {
+          // Scrolling down: smoothly hide header
+          setIsVisible(false);
+        } else if (deltaY < 0) {
+          // Scrolling up: smoothly reveal header
+          setIsVisible(true);
+        }
+      }
+
+      lastScrollY = currentScrollY;
+
+      // When the user stops scrolling, smoothly bring the header back
+      if (scrollStopTimer) {
+        clearTimeout(scrollStopTimer);
+      }
+      scrollStopTimer = setTimeout(() => {
+        setIsVisible(true);
+      }, 750);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (scrollStopTimer) clearTimeout(scrollStopTimer);
+    };
+  }, [mobileMenuOpen]);
 
   const navLinks = [
     { name: t.navHome, href: '#home', id: 'home' },
@@ -46,7 +94,9 @@ export const Header: React.FC<HeaderProps> = ({ onOpenApply, activeSection }) =>
   const phoneCallLink = `tel:${CONTACT_CONFIG.PHONE_NUMBER.replace(/\s+/g, '')}`;
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <header className={`fixed top-0 left-0 right-0 z-50 transform transition-transform duration-300 ease-in-out will-change-transform ${
+      isVisible ? 'translate-y-0' : '-translate-y-full shadow-none'
+    }`}>
       {/* Main Navigation Bar */}
       <nav className={`transition-all duration-300 ${
         isScrolled 

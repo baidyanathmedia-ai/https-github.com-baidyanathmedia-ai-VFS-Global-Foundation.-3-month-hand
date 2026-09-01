@@ -42,19 +42,19 @@ export const AdmissionSection: React.FC<AdmissionSectionProps> = ({ onOpenApply 
   ];
 
   return (
-    <section id="admission" className="py-20 bg-slate-50 relative">
+    <section id="admission" className="py-20 bg-slate-50 dark:bg-slate-900/60 relative transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Heading */}
         <div className="text-center max-w-3xl mx-auto space-y-3 mb-12">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold uppercase tracking-wider">
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-emerald-100 dark:bg-emerald-950/70 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60 text-xs font-bold uppercase tracking-wider">
             <ShieldCheck className="w-3.5 h-3.5" />
             <span>{t.admissionsTag}</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
             {t.admissionsTitle}
           </h2>
-          <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
+          <p className="text-slate-600 dark:text-slate-300 text-base sm:text-lg leading-relaxed">
             {t.admissionsSubtitle}
           </p>
         </div>
@@ -104,13 +104,13 @@ export const AdmissionSection: React.FC<AdmissionSectionProps> = ({ onOpenApply 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
           {/* Left: Required Documents Checklist */}
-          <div className="lg:col-span-7 bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
-            <div className="border-b border-slate-100 pb-4">
-              <h3 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-                <FileText className="w-5 h-5 text-blue-600" />
+          <div className="lg:col-span-7 bg-white dark:bg-slate-900 rounded-2xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
+            <div className="border-b border-slate-100 dark:border-slate-800 pb-4">
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                <FileText className="w-5 h-5 text-blue-600 dark:text-blue-400" />
                 <span>{t.admissionsReqDocsTitle}</span>
               </h3>
-              <p className="text-xs sm:text-sm text-slate-500 mt-1">
+              <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
                 {language === 'hi' 
                   ? 'कृपया त्वरित सत्यापन के लिए मूल दस्तावेजों के साथ स्व-सत्यापित फोटोकॉपी (ज़ेरॉक्स) साथ लाएं।'
                   : 'Please bring self-attested photocopies (Xerox) along with original documents for instant desk verification.'}
@@ -121,25 +121,25 @@ export const AdmissionSection: React.FC<AdmissionSectionProps> = ({ onOpenApply 
               {documents.map((doc, index) => (
                 <div 
                   key={doc.title} 
-                  className="p-4 rounded-xl bg-slate-50 hover:bg-blue-50/50 border border-slate-200/80 transition-colors flex items-start gap-3.5"
+                  className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 hover:bg-blue-50/50 dark:hover:bg-slate-800 border border-slate-200/80 dark:border-slate-700/70 transition-colors flex items-start gap-3.5"
                 >
-                  <div className="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 font-bold text-sm flex items-center justify-center shrink-0 mt-0.5">
+                  <div className="w-8 h-8 rounded-lg bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 font-bold text-sm flex items-center justify-center shrink-0 mt-0.5">
                     {index + 1}
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center justify-between gap-2">
-                      <h4 className="text-sm font-bold text-slate-900">{doc.title}</h4>
+                      <h4 className="text-sm font-bold text-slate-900 dark:text-white">{doc.title}</h4>
                       {doc.mandatory ? (
-                        <span className="text-[11px] font-semibold text-rose-600 bg-rose-50 px-2 py-0.5 rounded">
+                        <span className="text-[11px] font-semibold text-rose-600 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/60 px-2 py-0.5 rounded border border-rose-200 dark:border-rose-900/60">
                           {language === 'hi' ? 'अनिवार्य' : 'Required'}
                         </span>
                       ) : (
-                        <span className="text-[11px] font-semibold text-slate-500 bg-slate-100 px-2 py-0.5 rounded">
+                        <span className="text-[11px] font-semibold text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded">
                           {language === 'hi' ? 'वैकल्पिक' : 'Optional'}
                         </span>
                       )}
                     </div>
-                    <p className="text-xs text-slate-600 mt-1">{doc.description}</p>
+                    <p className="text-xs text-slate-600 dark:text-slate-300 mt-1">{doc.description}</p>
                   </div>
                 </div>
               ))}
@@ -154,70 +154,35 @@ export const AdmissionSection: React.FC<AdmissionSectionProps> = ({ onOpenApply 
                 <span>{t.applyOnlineBtn}</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
-              <span className="text-xs text-slate-500">
+              <span className="text-xs text-slate-500 dark:text-slate-400">
                 {language === 'hi' ? 'केंद्र आने से पहले ऑनलाइन फॉर्म भी भर सकते हैं।' : 'You can also submit your application online before visiting the centre.'}
               </span>
             </div>
           </div>
 
-          {/* Right: Admission Desk Timing & Centre Assistance */}
+          {/* Right: Centre Location & Certification Assistance */}
           <div className="lg:col-span-5 space-y-6">
             
-            {/* Document Submission Timing Card */}
-            <div className="bg-gradient-to-br from-blue-900 to-slate-900 rounded-2xl p-6 sm:p-7 text-white shadow-md space-y-5">
-              <div className="flex items-center gap-2.5 text-blue-300 font-bold text-sm uppercase tracking-wider">
-                <Clock className="w-4 h-4 text-emerald-400" />
-                <span>{language === 'hi' ? 'दस्तावेज़ जमा समय' : 'Admission Desk Timing'}</span>
-              </div>
-
-              <div className="p-4 rounded-xl bg-white/10 border border-white/15 backdrop-blur-sm space-y-1">
-                <div className="text-xs text-blue-200">{t.admissionsDocSubTimeLabel}:</div>
-                <div className="text-2xl sm:text-3xl font-extrabold text-emerald-300">
-                  {language === 'hi' ? 'सुबह 10:00 से दोपहर 01:00 बजे' : '10:00 AM to 01:00 PM'}
-                </div>
-                <div className="text-xs text-slate-300 pt-1">
-                  {language === 'hi'
-                    ? 'सीट सुरक्षित करने के लिए जल्द से जल्द प्रवेश प्रक्रिया पूर्ण करें।'
-                    : 'Students are encouraged to complete the admission process as early as possible to secure their seat.'}
-                </div>
-              </div>
-
-              <div className="space-y-2 text-xs text-slate-300">
-                <div className="flex items-start gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                  <span>{language === 'hi' ? 'अकादमी समन्वयकों द्वारा मौके पर दस्तावेज़ सत्यापन।' : 'On-spot document verification by academy coordinators.'}</span>
-                </div>
-                <div className="flex items-start gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                  <span>{language === 'hi' ? 'बैच आवंटन एवं समय-सारणी पुष्टिकरण तुरंत।' : 'Batch allotment and schedule confirmation slip issued immediately.'}</span>
-                </div>
-                <div className="flex items-start gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                  <span>{language === 'hi' ? 'कैरियर मार्गदर्शन हेतु काउंसलिंग उपलब्ध।' : 'Counselling available for career pathway guidance.'}</span>
-                </div>
-              </div>
-            </div>
-
             {/* Centre Submission Location Callout */}
-            <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-3">
-              <div className="flex items-center gap-2 text-slate-900 font-bold text-sm">
-                <Building className="w-4 h-4 text-blue-600" />
+            <div className="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm space-y-3">
+              <div className="flex items-center gap-2 text-slate-900 dark:text-white font-bold text-sm">
+                <Building className="w-4 h-4 text-blue-600 dark:text-blue-400" />
                 <span>{language === 'hi' ? 'दस्तावेज़ जमा केंद्र:' : 'Document Submission Centre:'}</span>
               </div>
-              <div className="text-xs text-slate-600 space-y-1 pl-6">
-                <p className="font-semibold text-slate-800">VFS Global Academy / VFS Global Foundation</p>
+              <div className="text-xs text-slate-600 dark:text-slate-300 space-y-1 pl-6">
+                <p className="font-semibold text-slate-800 dark:text-slate-200">VFS Global Academy / VFS Global Foundation</p>
                 <p>STPI, Deoghar (Jasidih), Near Swagat Petrol Pump</p>
                 <p>Manikpur Road, After Railway Over Bridge, Jasidih</p>
-                <p className="text-emerald-700 font-medium pt-1">{t.deskHours}</p>
+                <p className="text-emerald-700 dark:text-emerald-400 font-medium pt-1">{t.deskHours}</p>
               </div>
             </div>
 
             {/* Official Certification Preview Card */}
-            <div className="relative rounded-2xl overflow-hidden border border-slate-200 shadow-sm bg-slate-900 text-white group">
+            <div className="relative rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm bg-slate-900 text-white group">
               <img 
                 src="/src/assets/images/vfs_certificate_award_1788153716243.jpg" 
                 alt="VFS Global Foundation Official Certificate Award" 
-                className="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-500"
+                className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
                 referrerPolicy="no-referrer"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent flex items-end p-4">

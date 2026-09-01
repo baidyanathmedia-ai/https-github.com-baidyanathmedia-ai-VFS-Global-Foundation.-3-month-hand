@@ -55,7 +55,9 @@ export const CENTRE_HEAD_INFO: LeadershipProfile = {
     "Personality Development"
   ],
   quote: "Confidence is built through knowledge, communication and the courage to express yourself.",
-  image: "/src/assets/images/ramsewak_gunjan_head_1788171851297.jpg"
+  image: "/src/assets/images/ramsewak_gunjan_head_1788171851297.jpg",
+  secondaryImage: "/src/assets/images/gunjan_sir_secondary_action.jpg",
+  secondaryImageTitle: "Executive Leadership & Mentorship"
 };
 
 export const FACULTY_MEMBERS: FacultyProfile[] = [
@@ -82,6 +84,8 @@ export const FACULTY_MEMBERS: FacultyProfile[] = [
     ],
     quote: "Effective communication is not only about speaking English—it is about expressing yourself with confidence and clarity.",
     image: "/src/assets/images/pramod_sir_mentor_1788171866404.jpg",
+    secondaryImage: "/src/assets/images/pramod_sir_secondary_action.jpg",
+    secondaryImageTitle: "Interactive Spoken English & Classroom Drills",
     badge: "English & Personality Mentor"
   },
   {
@@ -371,6 +375,15 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "gal-3",
+    title: "Grand Auditorium Stage Seminar & Cultural Event",
+    category: "Student Activities",
+    description: "Academy mentors and students participating in a dynamic seminar and cultural stage presentation event.",
+    image: "/src/assets/images/auditorium_ceremony_event.jpg",
+    location: "Main Auditorium Hall",
+    featured: true
+  },
+  {
+    id: "gal-4",
     title: "Smart Classroom Lecture & Interactive Mentorship",
     category: "Training Sessions",
     description: "Students actively engaged during an interactive weekend training session focusing on hospitality management and communication modules with Centre Head.",
@@ -379,7 +392,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     featured: true
   },
   {
-    id: "gal-4",
+    id: "gal-5",
     title: "VFS Global Academy Front Reception Desk",
     category: "Campus Life",
     description: "Batch students, centre coordinators, and Centre Head gathered at the official VFS Global Academy front desk at STPI Deoghar.",
@@ -388,7 +401,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     featured: true
   },
   {
-    id: "gal-5",
+    id: "gal-6",
     title: "Student Practical Mock Presentation & Drills",
     category: "Student Activities",
     description: "Students practicing stage confidence, mock interviews, public presentation, and communication drills in front of smart display.",
@@ -397,16 +410,43 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     featured: true
   },
   {
-    id: "gal-6",
+    id: "gal-7",
+    title: "Student Celebrations & Cultural Gathering",
+    category: "Student Activities",
+    description: "Vibrant gathering of students and mentors celebrating batch milestones and cultural cohesion.",
+    image: "/src/assets/images/cultural_event_gathering.jpg",
+    location: "STPI Activity Area",
+    featured: false
+  },
+  {
+    id: "gal-8",
+    title: "Academic Workshop & Interactive Seminar",
+    category: "Training Sessions",
+    description: "In-depth practical seminar covering modern travel operations, customer service protocols, and spoken English.",
+    image: "/src/assets/images/academic_workshop_seminar.jpg",
+    location: "Seminar Hall",
+    featured: false
+  },
+  {
+    id: "gal-9",
     title: "Classroom Cohort & Active Study Session",
     category: "Training Sessions",
     description: "Dedicated weekend batch students in ergonomic chairs with notebooks engaged in communicative English and professional development.",
     image: "/src/assets/images/communication_skills_training_1788152527352.jpg",
     location: "Smart Training Room 2",
-    featured: true
+    featured: false
   },
   {
-    id: "gal-7",
+    id: "gal-10",
+    title: "Interactive Student Peer Interaction & Group Work",
+    category: "Student Activities",
+    description: "Collaborative peer group activities helping learners build teamwork, problem solving, and articulate conversation.",
+    image: "/src/assets/images/student_interaction_cohort.jpg",
+    location: "Discussion Lounge",
+    featured: false
+  },
+  {
+    id: "gal-11",
     title: "Travel & Hospitality Practical Workshop",
     category: "Training Sessions",
     description: "Hands-on customer service simulation and front desk guest interaction exercises conducted at the academy.",
@@ -415,7 +455,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     featured: false
   },
   {
-    id: "gal-8",
+    id: "gal-12",
     title: "Outdoor Educational Field Study & Excursion",
     category: "Educational Visits",
     description: "Faculty mentor and student cohort on a field study and team-building educational visit in Deoghar.",

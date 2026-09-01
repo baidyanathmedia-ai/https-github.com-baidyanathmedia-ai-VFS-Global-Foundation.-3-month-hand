@@ -40,6 +40,11 @@ interface LeadershipSectionProps {
 export const LeadershipSection: React.FC<LeadershipSectionProps> = ({ onOpenApply }) => {
   const { language } = useLanguage();
   const [downloadingId, setDownloadingId] = useState<string | null>(null);
+  const [activeGunjanPhoto, setActiveGunjanPhoto] = useState<'primary' | 'secondary'>('primary');
+  const [activeFacultyPhotos, setActiveFacultyPhotos] = useState<Record<string, 'primary' | 'secondary'>>({
+    'faculty-pramod': 'primary',
+    'faculty-raushan': 'primary'
+  });
 
   const handleDownloadCentreHeadPdf = async () => {
     setDownloadingId('head');
@@ -155,9 +160,9 @@ export const LeadershipSection: React.FC<LeadershipSectionProps> = ({ onOpenAppl
               <div className="lg:col-span-5 flex flex-col items-center text-center space-y-4">
                 <div className="relative w-full max-w-xs sm:max-w-sm aspect-[4/3] sm:aspect-square rounded-2xl overflow-hidden border-2 border-emerald-500/40 shadow-2xl bg-slate-800">
                   <img 
-                    src={CENTRE_HEAD_INFO.image} 
+                    src={activeGunjanPhoto === 'secondary' && CENTRE_HEAD_INFO.secondaryImage ? CENTRE_HEAD_INFO.secondaryImage : CENTRE_HEAD_INFO.image} 
                     alt={CENTRE_HEAD_INFO.name} 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-all duration-500"
                     referrerPolicy="no-referrer"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-50" />
@@ -165,6 +170,35 @@ export const LeadershipSection: React.FC<LeadershipSectionProps> = ({ onOpenAppl
                   <div className="absolute top-3 left-3 bg-blue-600/90 backdrop-blur-md text-white text-[11px] font-bold px-3 py-1 rounded-full shadow-md">
                     Academic Head
                   </div>
+
+                  {CENTRE_HEAD_INFO.secondaryImage && (
+                    <div className="absolute bottom-3 right-3 flex items-center gap-1.5 bg-slate-950/80 backdrop-blur-md p-1 rounded-xl border border-slate-700/60 shadow-lg">
+                      <button
+                        type="button"
+                        onClick={() => setActiveGunjanPhoto('primary')}
+                        className={`px-2.5 py-1 text-[10px] font-bold rounded-lg transition-all cursor-pointer ${
+                          activeGunjanPhoto === 'primary' 
+                            ? 'bg-emerald-500 text-white shadow' 
+                            : 'text-slate-300 hover:text-white hover:bg-slate-800'
+                        }`}
+                        title="View Primary Photo"
+                      >
+                        Photo 1
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setActiveGunjanPhoto('secondary')}
+                        className={`px-2.5 py-1 text-[10px] font-bold rounded-lg transition-all cursor-pointer ${
+                          activeGunjanPhoto === 'secondary' 
+                            ? 'bg-emerald-500 text-white shadow' 
+                            : 'text-slate-300 hover:text-white hover:bg-slate-800'
+                        }`}
+                        title="View Executive Photo"
+                      >
+                        Photo 2
+                      </button>
+                    </div>
+                  )}
                 </div>
 
                 <div className="pt-2 space-y-1 text-center w-full">
@@ -271,12 +305,41 @@ export const LeadershipSection: React.FC<LeadershipSectionProps> = ({ onOpenAppl
                   <div className="flex flex-col sm:flex-row items-center sm:items-start gap-5">
                     <div className="w-28 h-28 sm:w-32 sm:h-32 shrink-0 rounded-2xl overflow-hidden border-2 border-blue-500/40 shadow-lg bg-slate-800 relative">
                       <img
-                        src={faculty.image}
+                        src={activeFacultyPhotos[faculty.id] === 'secondary' && faculty.secondaryImage ? faculty.secondaryImage : faculty.image}
                         alt={faculty.name}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-all duration-500"
                         referrerPolicy="no-referrer"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent pointer-events-none" />
+
+                      {faculty.secondaryImage && (
+                        <div className="absolute bottom-1.5 inset-x-1.5 flex items-center justify-center gap-1 bg-slate-950/85 backdrop-blur-md py-0.5 px-1 rounded-lg border border-slate-700/60 shadow">
+                          <button
+                            type="button"
+                            onClick={() => setActiveFacultyPhotos(prev => ({ ...prev, [faculty.id]: 'primary' }))}
+                            className={`px-1.5 py-0.5 text-[9px] font-bold rounded transition-all cursor-pointer ${
+                              (activeFacultyPhotos[faculty.id] || 'primary') === 'primary'
+                                ? 'bg-blue-600 text-white'
+                                : 'text-slate-300 hover:text-white'
+                            }`}
+                            title="Profile Photo"
+                          >
+                            P1
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => setActiveFacultyPhotos(prev => ({ ...prev, [faculty.id]: 'secondary' }))}
+                            className={`px-1.5 py-0.5 text-[9px] font-bold rounded transition-all cursor-pointer ${
+                              activeFacultyPhotos[faculty.id] === 'secondary'
+                                ? 'bg-emerald-500 text-white'
+                                : 'text-slate-300 hover:text-white'
+                            }`}
+                            title="Action / Mentorship Photo"
+                          >
+                            P2
+                          </button>
+                        </div>
+                      )}
                     </div>
 
                     <div className="space-y-1.5 text-center sm:text-left flex-1 min-w-0">

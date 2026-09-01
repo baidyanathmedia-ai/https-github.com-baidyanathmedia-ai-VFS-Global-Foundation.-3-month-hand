@@ -95,26 +95,6 @@ export const WhyChooseUs: React.FC = () => {
           ))}
         </div>
 
-        {/* Highlight Quote Banner */}
-        <div className="mt-14 p-6 sm:p-8 bg-gradient-to-r from-blue-900 via-blue-800 to-emerald-900 text-white rounded-2xl shadow-lg flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="space-y-1 text-center md:text-left">
-            <h4 className="text-lg sm:text-xl font-bold text-white">
-              {language === 'hi' ? 'क्या आप अपने कौशल और आत्मविश्वास को बढ़ाने के लिए तैयार हैं?' : 'Ready to Upgrade Your Skills and Confidence?'}
-            </h4>
-            <p className="text-blue-200 text-sm max-w-2xl">
-              {language === 'hi'
-                ? 'कक्षाएं सप्ताह में 3 दिन (सुबह 10:00 से दोपहर 01:00 बजे) STPI जसीडीह केंद्र में आयोजित की जाती हैं।'
-                : 'Classes are held 3 days a week (10:00 AM – 01:00 PM) at the Software Technology Parks of India (STPI), Jasidih centre.'}
-            </p>
-          </div>
-          <a
-            href="#courses"
-            className="shrink-0 px-6 py-3 bg-white hover:bg-slate-100 text-blue-950 font-bold rounded-xl shadow transition-all duration-200 text-sm"
-          >
-            {t.heroExploreCoursesBtn}
-          </a>
-        </div>
-
       </div>
     </section>
   );

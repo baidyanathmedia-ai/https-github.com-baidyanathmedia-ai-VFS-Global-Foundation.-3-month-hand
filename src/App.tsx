@@ -18,7 +18,21 @@ import { ContactSection } from './components/ContactSection';
 import { BottomMarqueeSection } from './components/BottomMarqueeSection';
 import { Footer } from './components/Footer';
 import { ApplyModal } from './components/ApplyModal';
-import { ArrowRight, ChevronUp, MessageCircle } from 'lucide-react';
+import { SectionDivider } from './components/SectionDivider';
+import { 
+  ArrowRight, 
+  ChevronUp, 
+  MessageCircle, 
+  GraduationCap, 
+  Award, 
+  Sparkles, 
+  Calendar, 
+  ShieldCheck, 
+  Camera, 
+  Bell, 
+  HelpCircle,
+  Users
+} from 'lucide-react';
 import { CONTACT_CONFIG } from './data/academyData';
 
 export default function App() {
@@ -91,44 +105,150 @@ export default function App() {
         {/* 1. Hero Section */}
         <Hero onOpenApply={handleOpenApply} />
 
-        {/* 2. Responsive Animated Courses & Highlights Marquee Section (Above Excellence at STPI Deoghar) */}
+        {/* 2. Responsive Animated Courses & Highlights Marquee Section */}
         <BottomMarqueeSection onOpenApply={handleOpenApply} />
+
+        {/* Divider 1: Transition from Dark Marquee to Light/Dark About */}
+        <SectionDivider
+          id="divider-marquee-about"
+          variant="wave"
+          tone="dark-to-light"
+        />
 
         {/* 3. About Academy & STPI Location Section ("Vocational Excellence at STPI Deoghar") */}
         <AboutSection />
 
+        {/* Divider 2: About to Why Choose Us */}
+        <SectionDivider
+          id="divider-about-why"
+          variant="diamond-crest"
+          accent="blue"
+          icon={<Award className="w-3.5 h-3.5" />}
+          className="bg-white dark:bg-slate-950"
+        />
+
         {/* 4. Why Choose VFS Global Academy */}
         <WhyChooseUs />
+
+        {/* Divider 3: Why Choose Us to Courses */}
+        <SectionDivider
+          id="divider-why-courses"
+          variant="glow-line"
+          accent="emerald"
+          className="bg-slate-50 dark:bg-slate-900/60"
+        />
 
         {/* 5. Certificate Courses Section */}
         <CoursesSection onOpenApply={handleOpenApply} />
 
+        {/* Divider 4: Courses to Schedule */}
+        <SectionDivider
+          id="divider-courses-schedule"
+          variant="badge-crest"
+          accent="blue"
+          icon={<Calendar className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />}
+          badgeText="STPI Deoghar Training Schedule"
+          className="bg-slate-50 dark:bg-slate-900/60"
+        />
+
         {/* 6. Course Schedule & Timings */}
         <ScheduleSection />
+
+        {/* Divider 5: Schedule to Admissions */}
+        <SectionDivider
+          id="divider-schedule-admissions"
+          variant="diamond-crest"
+          accent="cyan"
+          icon={<ShieldCheck className="w-3.5 h-3.5 text-cyan-600 dark:text-cyan-400" />}
+          className="bg-white dark:bg-slate-950"
+        />
 
         {/* 7. Admissions Open & Document Verification Checklist */}
         <AdmissionSection onOpenApply={() => handleOpenApply()} />
 
+        {/* Divider 6: Admissions to Gallery */}
+        <SectionDivider
+          id="divider-admissions-gallery"
+          variant="glow-line"
+          accent="blue"
+          className="bg-slate-50 dark:bg-slate-900/60"
+        />
+
         {/* 8. Authentic Campus & Activities Photo Gallery */}
         <GallerySection onOpenApply={handleOpenApply} />
+
+        {/* Divider 7: Smooth curve into Leadership (Dark Canvas) */}
+        <SectionDivider
+          id="divider-gallery-leadership"
+          variant="curve"
+          tone="light-to-dark"
+        />
 
         {/* 9. Leadership & Faculty Section */}
         <LeadershipSection onOpenApply={handleOpenApply} />
 
+        {/* Divider 8: Smooth curve transition from Leadership to Testimonials */}
+        <SectionDivider
+          id="divider-leadership-testimonials"
+          variant="curve"
+          tone="dark-to-slate"
+          flip
+        />
+
         {/* 10. Student Testimonials */}
         <TestimonialsSection />
+
+        {/* Divider 9: Testimonials to Notice Board */}
+        <SectionDivider
+          id="divider-testimonials-notices"
+          variant="badge-crest"
+          accent="amber"
+          icon={<Bell className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />}
+          badgeText="Official Campus Notice Board"
+          className="bg-slate-50 dark:bg-slate-900/60"
+        />
 
         {/* 11. Dynamic Notice Board */}
         <NoticeBoard />
 
+        {/* Divider 10: Notice Board to Registration Portal */}
+        <SectionDivider
+          id="divider-notices-apply"
+          variant="glow-line"
+          accent="emerald"
+          className="bg-white dark:bg-slate-950"
+        />
+
         {/* 12. Full On-Page Registration Form Portal */}
         <ApplySection />
+
+        {/* Divider 11: Dynamic angled slant into CTA Banner */}
+        <SectionDivider
+          id="divider-apply-cta"
+          variant="slanted"
+          tone="slate-to-dark"
+        />
 
         {/* 13. Final CTA Banner: LEARN. GROW. ACHIEVE. */}
         <CtaSection onOpenApply={handleOpenApply} />
 
+        {/* Divider 12: Smooth wave transition from CTA Banner into FAQs */}
+        <SectionDivider
+          id="divider-cta-faqs"
+          variant="wave"
+          tone="dark-to-light"
+        />
+
         {/* 14. Frequently Asked Questions */}
         <FaqSection />
+
+        {/* Divider 13: Architectural angled cut into Contact & Map Section */}
+        <SectionDivider
+          id="divider-faqs-contact"
+          variant="slanted"
+          tone="light-to-dark"
+          flip
+        />
 
         {/* 15. Contact Academy & STPI Map */}
         <ContactSection />
