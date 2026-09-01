@@ -48,19 +48,19 @@ export const WhyChooseUs: React.FC = () => {
   ];
 
   return (
-    <section id="why-choose-us" className="py-20 bg-slate-50 relative">
+    <section id="why-choose-us" className="py-20 bg-slate-50 dark:bg-slate-900/60 relative transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-3 mb-16">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-bold uppercase tracking-wider">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-950/70 text-blue-800 dark:text-blue-300 border border-blue-200 dark:border-blue-800/60 text-xs font-bold uppercase tracking-wider">
             <Sparkles className="w-3.5 h-3.5" />
             <span>{t.whyTag}</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
             {t.whyTitle}
           </h2>
-          <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
+          <p className="text-slate-600 dark:text-slate-300 text-base sm:text-lg leading-relaxed">
             {t.whySubtitle}
           </p>
         </div>
@@ -71,23 +71,23 @@ export const WhyChooseUs: React.FC = () => {
             <div
               key={card.title}
               id={`why-choose-card-${index + 1}`}
-              className="group bg-white rounded-2xl p-7 shadow-sm hover:shadow-xl border border-slate-200/80 hover:border-blue-400/60 transition-all duration-300 flex flex-col justify-between hover:-translate-y-1"
+              className="group bg-white dark:bg-slate-900 rounded-2xl p-7 shadow-sm hover:shadow-xl border border-slate-200/80 dark:border-slate-800 hover:border-blue-400/60 dark:hover:border-blue-500/50 transition-all duration-300 flex flex-col justify-between hover:-translate-y-1"
             >
               <div className="space-y-4">
-                <div className="w-13 h-13 rounded-xl bg-gradient-to-br from-blue-50 to-emerald-50 border border-slate-100 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <div className="w-13 h-13 rounded-xl bg-gradient-to-br from-blue-50 to-emerald-50 dark:from-slate-800 dark:to-slate-800/60 border border-slate-100 dark:border-slate-700 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                   {card.icon}
                 </div>
                 
-                <h3 className="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                   {card.title}
                 </h3>
                 
-                <p className="text-slate-600 text-sm leading-relaxed">
+                <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
                   {card.description}
                 </p>
               </div>
 
-              <div className="pt-5 mt-5 border-t border-slate-100 flex items-center text-xs font-semibold text-emerald-700">
+              <div className="pt-5 mt-5 border-t border-slate-100 dark:border-slate-800 flex items-center text-xs font-semibold text-emerald-700 dark:text-emerald-400">
                 <CheckCircle className="w-4 h-4 mr-1.5 text-emerald-500" />
                 <span>{language === 'hi' ? 'सत्यापित अकादमी मानक' : 'Verified Academy Standard'}</span>
               </div>

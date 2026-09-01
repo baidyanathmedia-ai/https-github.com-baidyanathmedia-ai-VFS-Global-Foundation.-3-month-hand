@@ -79,7 +79,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-blue-600 selection:text-white flex flex-col">
+    <div className="min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 font-sans selection:bg-blue-600 selection:text-white flex flex-col transition-colors duration-200">
       {/* Scroll Progress Bar at Top of Viewport */}
       <ReadingProgressBar />
 
@@ -91,47 +91,47 @@ export default function App() {
         {/* 1. Hero Section */}
         <Hero onOpenApply={handleOpenApply} />
 
-        {/* 2. About Academy & STPI Location Section */}
+        {/* 2. Responsive Animated Courses & Highlights Marquee Section (Above Excellence at STPI Deoghar) */}
+        <BottomMarqueeSection onOpenApply={handleOpenApply} />
+
+        {/* 3. About Academy & STPI Location Section ("Vocational Excellence at STPI Deoghar") */}
         <AboutSection />
 
-        {/* 3. Why Choose VFS Global Academy */}
+        {/* 4. Why Choose VFS Global Academy */}
         <WhyChooseUs />
 
-        {/* 4. Certificate Courses Section */}
+        {/* 5. Certificate Courses Section */}
         <CoursesSection onOpenApply={handleOpenApply} />
 
-        {/* 5. Course Schedule & Timings */}
+        {/* 6. Course Schedule & Timings */}
         <ScheduleSection />
 
-        {/* 6. Admissions Open & Document Verification Checklist */}
+        {/* 7. Admissions Open & Document Verification Checklist */}
         <AdmissionSection onOpenApply={() => handleOpenApply()} />
 
-        {/* 7. Authentic Campus & Activities Photo Gallery */}
+        {/* 8. Authentic Campus & Activities Photo Gallery */}
         <GallerySection onOpenApply={handleOpenApply} />
 
-        {/* 8. Leadership & Faculty Section */}
+        {/* 9. Leadership & Faculty Section */}
         <LeadershipSection onOpenApply={handleOpenApply} />
 
-        {/* 9. Student Testimonials */}
+        {/* 10. Student Testimonials */}
         <TestimonialsSection />
 
-        {/* 10. Dynamic Notice Board */}
+        {/* 11. Dynamic Notice Board */}
         <NoticeBoard />
 
-        {/* 11. Full On-Page Registration Form Portal */}
+        {/* 12. Full On-Page Registration Form Portal */}
         <ApplySection />
 
-        {/* 12. Final CTA Banner: LEARN. GROW. ACHIEVE. */}
+        {/* 13. Final CTA Banner: LEARN. GROW. ACHIEVE. */}
         <CtaSection onOpenApply={handleOpenApply} />
 
-        {/* 13. Frequently Asked Questions */}
+        {/* 14. Frequently Asked Questions */}
         <FaqSection />
 
-        {/* 14. Contact Academy & STPI Map */}
+        {/* 15. Contact Academy & STPI Map */}
         <ContactSection />
-
-        {/* 15. Responsive Animated Marquee Section */}
-        <BottomMarqueeSection onOpenApply={handleOpenApply} />
       </main>
 
       {/* Footer */}

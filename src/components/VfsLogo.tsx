@@ -2,7 +2,7 @@ import React from 'react';
 
 interface VfsLogoProps {
   className?: string;
-  variant?: 'light' | 'dark' | 'full';
+  variant?: 'light' | 'dark' | 'full' | 'auto';
   showSubtitle?: boolean;
   size?: 'sm' | 'md' | 'lg' | 'xl';
   shieldOnly?: boolean;
@@ -10,7 +10,7 @@ interface VfsLogoProps {
 
 export const VfsLogo: React.FC<VfsLogoProps> = ({
   className = '',
-  variant = 'light',
+  variant = 'auto',
   showSubtitle = true,
   size = 'md',
   shieldOnly = false,
@@ -24,7 +24,7 @@ export const VfsLogo: React.FC<VfsLogoProps> = ({
   };
 
   const currentSize = sizeMap[size];
-  const isDark = variant === 'dark';
+  const isExplicitDark = variant === 'dark';
 
   return (
     <div className={`inline-flex items-center gap-3 select-none ${className}`}>
@@ -108,14 +108,18 @@ export const VfsLogo: React.FC<VfsLogoProps> = ({
           <div className="flex flex-col">
             <span 
               className={`font-black tracking-wider uppercase ${currentSize.title} ${
-                isDark ? 'text-white' : 'text-slate-900'
+                isExplicitDark 
+                  ? 'text-white' 
+                  : variant === 'light' 
+                    ? 'text-slate-900' 
+                    : 'text-slate-900 dark:text-white'
               }`}
               style={{ letterSpacing: '0.08em' }}
             >
               VFS GLOBAL
             </span>
             <span 
-              className={`font-black tracking-tight uppercase text-blue-600 ${currentSize.academy}`}
+              className={`font-black tracking-tight uppercase text-blue-600 dark:text-blue-400 ${currentSize.academy}`}
               style={{ letterSpacing: '0.02em', marginTop: '-1px' }}
             >
               ACADEMY
@@ -125,12 +129,16 @@ export const VfsLogo: React.FC<VfsLogoProps> = ({
           {showSubtitle && (
             <div className="flex items-center gap-1.5 mt-1">
               <span className={`text-[10px] sm:text-[11px] font-semibold ${
-                isDark ? 'text-slate-400' : 'text-slate-500'
+                isExplicitDark 
+                  ? 'text-slate-400' 
+                  : variant === 'light' 
+                    ? 'text-slate-500' 
+                    : 'text-slate-500 dark:text-slate-400'
               }`}>
                 Under VFS Global Foundation
               </span>
               <span className="w-1 h-1 rounded-full bg-emerald-500 inline-block" />
-              <span className="text-[10px] sm:text-[11px] font-bold text-emerald-500">
+              <span className="text-[10px] sm:text-[11px] font-bold text-emerald-600 dark:text-emerald-400">
                 STPI Deoghar
               </span>
             </div>

@@ -23,7 +23,14 @@ export const CONTACT_CONFIG = {
     "Jasidih, Deoghar, Jharkhand, PIN - 814142"
   ],
   OFFICE_TIMINGS: "10:00 AM – 01:00 PM (Monday to Sunday)",
-  DOCUMENT_SUBMISSION_TIMING: "10:00 AM to 01:00 PM"
+  DOCUMENT_SUBMISSION_TIMING: "10:00 AM to 01:00 PM",
+  
+  // Social Media Links
+  SOCIAL_LINKS: {
+    LINKEDIN: "https://www.linkedin.com/company/vfs-global",
+    INSTAGRAM: "https://www.instagram.com/vfsglobalofficial",
+    FACEBOOK: "https://www.facebook.com/vfsglbl"
+  }
 };
 
 // ============================================================================
