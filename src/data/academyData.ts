@@ -470,6 +470,26 @@ export const GALLERY_ITEMS: GalleryItem[] = [
 // ============================================================================
 export const TESTIMONIALS_DATA: Testimonial[] = [
   {
+    id: "test-sujit",
+    name: "Sujit Kumar",
+    role: "Certified Graduate",
+    course: "Travel & Hospitality & Communication",
+    batch: "2025-26 Batch",
+    quote: "Completing the Travel & Hospitality Management and Language & Communication courses at VFS Global Academy, STPI Deoghar has been transformative. Under the constant mentorship of Gunjan Sir, Raushan Sir, and Pramod Sir, my spoken English, public presentation, and personality development reached a whole new level. Their practical industry insights gave me the real-world skills and confidence needed for accelerated career growth.",
+    rating: 5,
+    avatarBg: "bg-blue-600 text-white"
+  },
+  {
+    id: "test-aman",
+    name: "Aman Roy",
+    role: "Certified Graduate",
+    course: "Travel & Hospitality & Communication",
+    batch: "2025-26 Batch",
+    quote: "My experience with VFS Global Academy at STPI Deoghar was truly enriching. The personalized guidance from Gunjan Sir on leadership and etiquette, Raushan Sir on hospitality operations, and Pramod Sir on communication and confidence-building helped me overcome my hesitation. This comprehensive training equipped me with robust professional skills and strong industry readiness.",
+    rating: 5,
+    avatarBg: "bg-emerald-600 text-white"
+  },
+  {
     id: "test-1",
     name: "Nitish Kumar",
     role: "Certified Graduate",
@@ -477,7 +497,7 @@ export const TESTIMONIALS_DATA: Testimonial[] = [
     batch: "2025-26 Batch",
     quote: "This training helped me improve my communication and professional confidence. The mentors at STPI Deoghar gave practical insights into tourism and hospitality that gave me the courage to apply for top service roles.",
     rating: 5,
-    avatarBg: "bg-blue-600 text-white"
+    avatarBg: "bg-indigo-600 text-white"
   },
   {
     id: "test-2",
@@ -487,7 +507,7 @@ export const TESTIMONIALS_DATA: Testimonial[] = [
     batch: "2025-26 Batch",
     quote: "The course provided valuable knowledge about professional communication and interview readiness. Earlier I was hesitant to speak publicly, but the weekend presentations and mock interviews transformed my fluency.",
     rating: 5,
-    avatarBg: "bg-emerald-600 text-white"
+    avatarBg: "bg-purple-600 text-white"
   },
   {
     id: "test-3",
@@ -497,7 +517,7 @@ export const TESTIMONIALS_DATA: Testimonial[] = [
     batch: "2025-26 Batch",
     quote: "The 3-month weekend schedule was very convenient and the training environment at STPI Jasidih is state-of-the-art. I learned how customer service, front office etiquette, and guest handling work in real companies.",
     rating: 5,
-    avatarBg: "bg-indigo-600 text-white"
+    avatarBg: "bg-amber-600 text-white"
   },
   {
     id: "test-4",

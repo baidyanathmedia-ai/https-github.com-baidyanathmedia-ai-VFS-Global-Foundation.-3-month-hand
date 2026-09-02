@@ -24,57 +24,65 @@ export const Header: React.FC<HeaderProps> = ({ onOpenApply, activeSection }) =>
   const { t } = useLanguage();
 
   useEffect(() => {
-    let lastScrollY = window.scrollY;
-    let scrollStopTimer: ReturnType<typeof setTimeout> | null = null;
+    let lastScrollY = Math.max(0, window.scrollY);
+    let ticking = false;
 
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
+    const updateScrollDirection = () => {
+      const currentScrollY = Math.max(0, window.scrollY);
+      const maxScrollY = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
       
       // Update background blur and shadow when scrolled past top threshold
       setIsScrolled(currentScrollY > 20);
 
       // Always show at the top of the page
-      if (currentScrollY <= 30) {
+      if (currentScrollY <= 40) {
         setIsVisible(true);
         lastScrollY = currentScrollY;
+        ticking = false;
         return;
       }
 
-      // If mobile dropdown menu is open, do not hide header
+      // If mobile dropdown menu is open, keep header visible
       if (mobileMenuOpen) {
         setIsVisible(true);
         lastScrollY = currentScrollY;
+        ticking = false;
+        return;
+      }
+
+      // Ignore overscroll bounces at the bottom of the page
+      if (currentScrollY >= maxScrollY - 10) {
+        ticking = false;
         return;
       }
 
       const deltaY = currentScrollY - lastScrollY;
 
-      // Minimum scroll delta threshold to avoid jitter on small touchpad movements
-      if (Math.abs(deltaY) > 6) {
-        if (deltaY > 0 && currentScrollY > 100) {
-          // Scrolling down: smoothly hide header
+      // Minimum scroll delta threshold (6px) to avoid jitter on micro-movements
+      if (Math.abs(deltaY) >= 6) {
+        if (deltaY > 0 && currentScrollY > 80) {
+          // Scrolling DOWN -> smoothly hide header upward (remains hidden when scrolling stops)
           setIsVisible(false);
         } else if (deltaY < 0) {
-          // Scrolling up: smoothly reveal header
+          // Scrolling UP -> smoothly reveal header (remains visible when scrolling stops)
           setIsVisible(true);
         }
+        lastScrollY = currentScrollY;
       }
 
-      lastScrollY = currentScrollY;
+      ticking = false;
+    };
 
-      // When the user stops scrolling, smoothly bring the header back
-      if (scrollStopTimer) {
-        clearTimeout(scrollStopTimer);
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateScrollDirection);
+        ticking = true;
       }
-      scrollStopTimer = setTimeout(() => {
-        setIsVisible(true);
-      }, 750);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      if (scrollStopTimer) clearTimeout(scrollStopTimer);
     };
   }, [mobileMenuOpen]);
 
@@ -95,7 +103,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenApply, activeSection }) =>
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transform transition-transform duration-300 ease-in-out will-change-transform ${
-      isVisible ? 'translate-y-0' : '-translate-y-full shadow-none'
+      isVisible ? 'translate-y-0 pointer-events-auto' : '-translate-y-full shadow-none pointer-events-none'
     }`}>
       {/* Main Navigation Bar */}
       <nav className={`transition-all duration-300 ${
