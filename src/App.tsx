@@ -10,6 +10,7 @@ import { AdmissionSection } from './components/AdmissionSection';
 import { GallerySection } from './components/GallerySection';
 import { LeadershipSection } from './components/LeadershipSection';
 import { TestimonialsSection } from './components/TestimonialsSection';
+import { SuccessStoriesSection } from './components/SuccessStoriesSection';
 import { NoticeBoard } from './components/NoticeBoard';
 import { ApplySection } from './components/ApplySection';
 import { CtaSection } from './components/CtaSection';
@@ -31,7 +32,8 @@ import {
   Camera, 
   Bell, 
   HelpCircle,
-  Users
+  Users,
+  Briefcase
 } from 'lucide-react';
 import { CONTACT_CONFIG } from './data/academyData';
 
@@ -67,6 +69,7 @@ export default function App() {
         'gallery',
         'leadership',
         'testimonials',
+        'success-stories',
         'notices',
         'apply-now',
         'faqs',
@@ -198,17 +201,30 @@ export default function App() {
         {/* 10. Student Testimonials */}
         <TestimonialsSection />
 
-        {/* Divider 9: Testimonials to Notice Board */}
+        {/* Divider 9: Testimonials to Success Stories */}
         <SectionDivider
-          id="divider-testimonials-notices"
+          id="divider-testimonials-success"
+          variant="diamond-crest"
+          accent="emerald"
+          icon={<Briefcase className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />}
+          badgeText="Alumni Career Outcomes"
+          className="bg-slate-50 dark:bg-slate-900/60"
+        />
+
+        {/* 11. Alumni Success Stories & Case Studies */}
+        <SuccessStoriesSection onOpenApply={handleOpenApply} />
+
+        {/* Divider 10: Success Stories to Notice Board */}
+        <SectionDivider
+          id="divider-success-notices"
           variant="badge-crest"
           accent="amber"
           icon={<Bell className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />}
           badgeText="Official Campus Notice Board"
-          className="bg-slate-50 dark:bg-slate-900/60"
+          className="bg-white dark:bg-slate-950"
         />
 
-        {/* 11. Dynamic Notice Board */}
+        {/* 12. Dynamic Notice Board */}
         <NoticeBoard />
 
         {/* Divider 10: Notice Board to Registration Portal */}

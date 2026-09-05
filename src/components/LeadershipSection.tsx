@@ -27,7 +27,6 @@ import {
 import { 
   CENTRE_HEAD_INFO, 
   FACULTY_MEMBERS, 
-  TEACHING_APPROACHES, 
   COMMITMENT_GOALS 
 } from '../data/academyData';
 import { generateFacultyProfilePdf } from '../utils/generateProfilePdf';
@@ -87,26 +86,6 @@ export const LeadershipSection: React.FC<LeadershipSectionProps> = ({ onOpenAppl
       console.error('Failed to generate faculty PDF:', err);
     } finally {
       setDownloadingId(null);
-    }
-  };
-
-  // Helper icon mapper for approach cards
-  const getApproachIcon = (iconName: string) => {
-    switch (iconName) {
-      case 'GraduationCap':
-        return <GraduationCap className="w-6 h-6 text-blue-400" />;
-      case 'MessageSquare':
-        return <MessageSquare className="w-6 h-6 text-emerald-400" />;
-      case 'Sparkles':
-        return <Sparkles className="w-6 h-6 text-amber-400" />;
-      case 'Compass':
-        return <Compass className="w-6 h-6 text-cyan-400" />;
-      case 'Briefcase':
-        return <Briefcase className="w-6 h-6 text-indigo-400" />;
-      case 'ShieldCheck':
-        return <ShieldCheck className="w-6 h-6 text-emerald-400" />;
-      default:
-        return <BookOpen className="w-6 h-6 text-blue-400" />;
     }
   };
 
@@ -428,61 +407,7 @@ export const LeadershipSection: React.FC<LeadershipSectionProps> = ({ onOpenAppl
         </div>
 
         {/* ================================================================= */}
-        {/* 4. OUR APPROACH TO LEARNING (6 Cards) */}
-        {/* ================================================================= */}
-        <div className="space-y-8 pt-4">
-          <div className="text-center max-w-3xl mx-auto space-y-3">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-bold uppercase tracking-wider">
-              <Compass className="w-3.5 h-3.5 text-emerald-400" />
-              <span>Pedagogy &amp; Methodology</span>
-            </div>
-
-            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight">
-              OUR APPROACH TO LEARNING
-            </h3>
-
-            <p className="text-slate-300 text-xs sm:text-sm">
-              Our structured six-pillar training framework bridges academic concepts with practical industry demands.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {TEACHING_APPROACHES.map((approach) => (
-              <div
-                key={approach.id}
-                id={`approach-card-${approach.id}`}
-                className="bg-slate-900/80 border border-slate-800 hover:border-blue-500/40 rounded-2xl p-6 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-900/10 group flex flex-col justify-between"
-              >
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <div className="w-12 h-12 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center group-hover:scale-110 transition-transform">
-                      {getApproachIcon(approach.icon)}
-                    </div>
-                    <span className="text-xs font-mono font-bold text-slate-400 bg-slate-800 px-2.5 py-1 rounded-md">
-                      0{approach.id}
-                    </span>
-                  </div>
-
-                  <div>
-                    <h4 className="text-base sm:text-lg font-bold text-white tracking-tight group-hover:text-blue-300 transition-colors">
-                      {approach.title}
-                    </h4>
-                    <p className="text-xs text-emerald-400 font-medium mt-0.5">
-                      {approach.titleHi}
-                    </p>
-                  </div>
-
-                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                    {approach.description}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* ================================================================= */}
-        {/* 5. OUR COMMITMENT: EMPOWERING STUDENTS FOR A BETTER FUTURE */}
+        {/* OUR COMMITMENT: EMPOWERING STUDENTS FOR A BETTER FUTURE */}
         {/* ================================================================= */}
         <div className="bg-gradient-to-r from-blue-950/80 via-slate-900 to-emerald-950/80 border border-blue-800/40 rounded-3xl p-8 sm:p-12 shadow-2xl backdrop-blur-xl relative overflow-hidden">
           <div className="max-w-4xl mx-auto space-y-8 text-center sm:text-left">

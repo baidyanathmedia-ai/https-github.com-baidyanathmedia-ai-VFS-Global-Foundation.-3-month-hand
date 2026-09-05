@@ -136,6 +136,11 @@ export interface Translations {
   testimonialsTitle: string;
   testimonialsSubtitle: string;
 
+  // Success Stories
+  successStoriesTag: string;
+  successStoriesTitle: string;
+  successStoriesSubtitle: string;
+
   // Notice & FAQs
   noticesTag: string;
   noticesTitle: string;
@@ -298,6 +303,10 @@ const TRANSLATIONS: Record<Language, Translations> = {
     testimonialsTitle: "What Our Students & Alumni Say",
     testimonialsSubtitle: "Real experiences from graduates who accelerated their careers and confidence at VFS Global Academy.",
 
+    successStoriesTag: "Career Placements",
+    successStoriesTitle: "Alumni Success Stories & Case Studies",
+    successStoriesSubtitle: "Case study snapshots of graduates from STPI Deoghar excelling in global airlines, luxury hospitality, and international travel services.",
+
     noticesTag: "Announcements",
     noticesTitle: "Academy Notice Board",
     noticesSubtitle: "Official batch announcements, document verification deadlines, and holiday notices for STPI Deoghar.",
@@ -456,6 +465,10 @@ const TRANSLATIONS: Record<Language, Translations> = {
     testimonialsTag: "छात्र अनुभव",
     testimonialsTitle: "हमारे छात्र एवं पूर्व छात्र क्या कहते हैं",
     testimonialsSubtitle: "उन छात्रों के वास्तविक अनुभव जिन्होंने VFS Global Academy से अपने आत्मविश्वास और करियर को नई दिशा दी।",
+
+    successStoriesTag: "करियर सफलता",
+    successStoriesTitle: "पूर्व छात्रों की सफलता की कहानियां व केस स्टडीज",
+    successStoriesSubtitle: "STPI देवघर से प्रशिक्षित छात्रों की वास्तविक सफलता, जो आज प्रमुख एयरलाइंस, फाइव-स्टार होटल्स और ट्रेवल सेवाओं में कार्यरत हैं।",
 
     noticesTag: "नवीनतम सूचनाएं",
     noticesTitle: "अकादमी नोटिस बोर्ड",

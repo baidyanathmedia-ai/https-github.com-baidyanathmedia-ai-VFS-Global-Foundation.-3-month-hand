@@ -161,32 +161,6 @@ export const GallerySection: React.FC<GallerySectionProps> = ({ onOpenApply }) =
           ))}
         </div>
 
-        {/* Gallery Summary Assurance Callout */}
-        <div className="mt-12 p-5 rounded-2xl bg-blue-50/80 dark:bg-slate-900 border border-blue-200/80 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left transition-colors">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-blue-600 dark:bg-blue-600 text-white flex items-center justify-center shrink-0 shadow-xs">
-              <Award className="w-5 h-5" />
-            </div>
-            <div>
-              <h4 className="text-sm font-bold text-slate-900 dark:text-white">
-                {language === 'hi' ? 'प्रामाणिक शैक्षणिक एवं प्रशिक्षण झलकियां' : 'Authentic Academic & Training Showcase'}
-              </h4>
-              <p className="text-xs text-slate-600 dark:text-slate-300">
-                {language === 'hi'
-                  ? 'सभी तस्वीरें STPI देवघर में छात्र बैचों, प्रमाण पत्र समारोहों और व्यावहारिक सत्रों की वास्तविक छवियां हैं।'
-                  : 'All photos are authentic captures of student cohorts, certification ceremonies, and practical exercises at STPI Deoghar.'}
-              </p>
-            </div>
-          </div>
-
-          <a
-            href="#courses"
-            className="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-500 text-white text-xs font-bold rounded-xl transition-colors shrink-0 shadow-sm"
-          >
-            {language === 'hi' ? 'कोर्स देखें एवं नए बैच में शामिल हों' : 'Explore Courses & Join Next Batch'}
-          </a>
-        </div>
-
       </div>
 
       {/* Lightbox Preview Modal */}

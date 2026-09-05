@@ -35,6 +35,23 @@ export interface Testimonial {
   avatarBg?: string;
 }
 
+export interface SuccessStory {
+  id: string;
+  name: string;
+  currentRole: string;
+  company: string;
+  location?: string;
+  category: 'Aviation' | 'Hospitality' | 'Visa & Consular' | 'Travel & Tourism';
+  course: string;
+  batch: string;
+  challenge: string;
+  transformation: string;
+  currentImpact: string;
+  keyMetric?: string;
+  avatarBg?: string;
+  rating?: number;
+}
+
 export interface Notice {
   id: string;
   title: string;

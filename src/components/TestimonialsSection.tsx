@@ -6,16 +6,24 @@ import {
 } from 'lucide-react';
 import { TESTIMONIALS_DATA } from '../data/academyData';
 import { useLanguage } from '../context/LanguageContext';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 export const TestimonialsSection: React.FC = () => {
   const { t, language } = useLanguage();
+  const { ref: sectionRef, isVisible } = useScrollAnimation<HTMLElement>({ threshold: 0.1 });
 
   return (
-    <section id="testimonials" className="py-20 bg-slate-50 dark:bg-slate-900/60 relative transition-colors duration-200">
+    <section 
+      ref={sectionRef}
+      id="testimonials" 
+      className="py-20 bg-slate-50 dark:bg-slate-900/60 relative transition-colors duration-200 overflow-hidden"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Heading */}
-        <div className="text-center max-w-3xl mx-auto space-y-3 mb-16">
+        {/* Section Heading with subtle fade-in-up */}
+        <div className={`text-center max-w-3xl mx-auto space-y-3 mb-16 transition-all duration-700 ${
+          isVisible ? 'animate-fade-in-up opacity-100' : 'opacity-0 translate-y-6'
+        }`}>
           <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-blue-100 dark:bg-blue-950/70 text-blue-800 dark:text-blue-300 border border-blue-200 dark:border-blue-800/60 text-xs font-bold uppercase tracking-wider">
             <MessageSquare className="w-3.5 h-3.5" />
             <span>{t.testimonialsTag}</span>
@@ -28,12 +36,15 @@ export const TestimonialsSection: React.FC = () => {
           </p>
         </div>
 
-        {/* Testimonials Grid */}
+        {/* Testimonials Grid with staggered subtle fade-in-up */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {TESTIMONIALS_DATA.map((item) => (
+          {TESTIMONIALS_DATA.map((item, index) => (
             <div
               key={item.id}
-              className="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between hover:-translate-y-1 group"
+              style={{ animationDelay: `${index * 80 + 100}ms` }}
+              className={`bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between hover:-translate-y-1 group ${
+                isVisible ? 'animate-fade-in-up opacity-100' : 'opacity-0 translate-y-6'
+              }`}
             >
               <div className="space-y-4">
                 {/* Star rating & Course badge */}
@@ -79,7 +90,9 @@ export const TestimonialsSection: React.FC = () => {
         </div>
 
         {/* Code Notice / Helper Note for editing */}
-        <div className="mt-12 text-center text-xs text-slate-500 dark:text-slate-400">
+        <div className={`mt-12 text-center text-xs text-slate-500 dark:text-slate-400 transition-all duration-700 ${
+          isVisible ? 'animate-fade-in-up animation-delay-400 opacity-100' : 'opacity-0'
+        }`}>
           <span className="italic">
             {language === 'hi' 
               ? 'नोट: STPI देवघर के पूर्व छात्रों के वास्तविक अनुभव।' 

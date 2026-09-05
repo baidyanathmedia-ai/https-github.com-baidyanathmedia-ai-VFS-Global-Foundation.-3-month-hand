@@ -1,4 +1,4 @@
-import { Course, GalleryItem, Testimonial, Notice, FAQItem, LeadershipProfile, FacultyProfile, TeachingApproachItem } from '../types';
+import { Course, GalleryItem, Testimonial, SuccessStory, Notice, FAQItem, LeadershipProfile, FacultyProfile, TeachingApproachItem } from '../types';
 
 // ============================================================================
 // OFFICIAL CONTACT CONFIGURATION (Easily update official contact details here)
@@ -528,6 +528,108 @@ export const TESTIMONIALS_DATA: Testimonial[] = [
     quote: "Under the leadership of Centre Head Ramsewak Sir, every student receives personal attention. The practical activities and educational visit made learning engaging and highly memorable.",
     rating: 5,
     avatarBg: "bg-sky-600 text-white"
+  }
+];
+
+// ============================================================================
+// SUCCESS STORIES & CASE STUDY SNAPSHOTS (Alumni roles & corporate placements)
+// ============================================================================
+export const SUCCESS_STORIES_DATA: SuccessStory[] = [
+  {
+    id: "story-sujit",
+    name: "Sujit Kumar",
+    currentRole: "Airport Experience Associate",
+    company: "IndiGo Airlines",
+    location: "Ranchi / Kolkata Hub",
+    category: "Aviation",
+    course: "Travel, Hospitality & Communication",
+    batch: "2025-26 Batch",
+    challenge: "Faced hesitation during spontaneous English conversations and had no previous exposure to commercial airport operations.",
+    transformation: "Underwent intensive boarding simulation drills, public speaking practice with Pramod Sir, and passenger protocol training from Gunjan Sir & Raushan Sir.",
+    currentImpact: "Successfully coordinates terminal check-ins, boarding gates, and special passenger assistance with exceptional customer commendations.",
+    keyMetric: "Airlines Selection",
+    avatarBg: "bg-blue-600 text-white",
+    rating: 5
+  },
+  {
+    id: "story-aman",
+    name: "Aman Roy",
+    currentRole: "Guest Relations Executive",
+    company: "The Leela Palaces, Hotels & Resorts",
+    location: "Bengaluru",
+    category: "Hospitality",
+    course: "Travel & Hospitality Management",
+    batch: "2025-26 Batch",
+    challenge: "Struggled with corporate posture, grooming standards, and confidence when speaking before senior interview panels.",
+    transformation: "Mastered 5-star hospitality guest journey standards, executive communication, and customer conflict resolution at the STPI Deoghar centre.",
+    currentImpact: "Promoted to full Executive within 6 months; currently leads VIP guest arrivals, front-desk concierges, and luxury lounge operations.",
+    keyMetric: "Fast-Track Promotion",
+    avatarBg: "bg-emerald-600 text-white",
+    rating: 5
+  },
+  {
+    id: "story-priya",
+    name: "Priya Kumari",
+    currentRole: "Visa Operations Officer",
+    company: "VFS Global Services",
+    location: "Kolkata Application Centre",
+    category: "Visa & Consular",
+    course: "Travel & Hospitality Management",
+    batch: "2025 Batch",
+    challenge: "Lacked knowledge of international consular workflows, biometric data capture compliance, and cross-cultural customer etiquette.",
+    transformation: "Completed dedicated modules in international document verification, applicant data security, and courteous consular customer handling.",
+    currentImpact: "Processes 70+ visa applicants daily with zero compliance errors while maintaining exceptional applicant satisfaction ratings.",
+    keyMetric: "Zero-Defect Verification",
+    avatarBg: "bg-purple-600 text-white",
+    rating: 5
+  },
+  {
+    id: "story-nitish",
+    name: "Nitish Kumar",
+    currentRole: "Front Office Specialist",
+    company: "ITC Hotels (Welcomhotel)",
+    location: "Bhubaneswar / Ranchi",
+    category: "Hospitality",
+    course: "Travel & Hospitality Management",
+    batch: "2025-26 Batch",
+    challenge: "Nervous in group discussions and lacked practical understanding of hotel front-office software and guest check-in systems.",
+    transformation: "Completed 36+ hours of interactive mock interview panels, hotel front-desk roleplays, and English fluency masterclasses.",
+    currentImpact: "Directs hotel lobby reception, coordinates banquet corporate check-ins, and handles guest inquiries with confidence and poise.",
+    keyMetric: "Campus Placement Selection",
+    avatarBg: "bg-indigo-600 text-white",
+    rating: 5
+  },
+  {
+    id: "story-megha",
+    name: "Megha Kumari",
+    currentRole: "Travel Desk & Holiday Consultant",
+    company: "MakeMyTrip",
+    location: "Patna Regional Centre",
+    category: "Travel & Tourism",
+    course: "Language & Communication",
+    batch: "2025-26 Batch",
+    challenge: "Felt nervous during telephone client negotiations and lacked knowledge of domestic and international tourism itineraries.",
+    transformation: "Learned tourism packaging essentials, phone etiquette, and customer journey planning through weekend practical sessions at STPI Jasidih.",
+    currentImpact: "Designs customized spiritual and leisure travel packages across Eastern India with a 98% client satisfaction rate.",
+    keyMetric: "98% Client Satisfaction",
+    avatarBg: "bg-amber-600 text-white",
+    rating: 5
+  },
+  {
+    id: "story-rahul",
+    name: "Rahul Anand",
+    currentRole: "Aviation Ground Operations Associate",
+    company: "Air India SATS (AISATS)",
+    location: "Delhi IGI Airport (T3)",
+    category: "Aviation",
+    course: "Travel, Hospitality & Communication",
+    batch: "2025-26 Batch",
+    challenge: "Struggled with spoken English accents and lacked clarity on international flight transit procedures and team communication.",
+    transformation: "Underwent focused phonetics training, rapid-response communication drills, and ramp coordination teamwork exercises under Pramod Sir.",
+    currentImpact: "Coordinates flight baggage handling, transit passenger clearances, and on-time turnarounds at Terminal 3.",
+    keyMetric: "IGI Airport Placement",
+    avatarBg: "bg-sky-600 text-white",
+    rating: 5
   }
 ];
 
